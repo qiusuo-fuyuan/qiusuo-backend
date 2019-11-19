@@ -13,6 +13,7 @@
         <module>connect-parent</module>
         <module>geekstreaming-parent</module>
         <module>core-parent</module>
+        <module>codingeditor-parent</module>
     </modules>
 
 
