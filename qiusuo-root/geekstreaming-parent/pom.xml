@@ -9,11 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>core-parent</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>authenticationservice</module>
-    </modules>
+    <artifactId>geekstreaming</artifactId>
 
 
 </project>
