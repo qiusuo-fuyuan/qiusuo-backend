@@ -1,0 +1,10 @@
+cluster_name: 'qiusuo_cassandra'
+listen_address: 
+rpc_address: 
+num_tokens: 256
+seed_provider:
+  - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+parameters:
+  - seeds: "[node1_ip_address],[node2_ip_address]"
+endpoint_snitch: GossipingPropertyFileSnitch
+auto_bootstrap: false
