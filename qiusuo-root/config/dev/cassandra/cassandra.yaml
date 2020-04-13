@@ -1,5 +1,5 @@
 cluster_name: 'qiusuo_cassandra'
-listen_address: 
+listen_address: localhost
 rpc_address: 
 num_tokens: 256
 seed_provider:
