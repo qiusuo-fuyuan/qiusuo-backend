@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+    cassandra: 
+        container_name: qiusuo-cassandra
+        image: cassandra:latest
+        ports:
+            - '7000:7000'
+            - '9042:9042'
+        networks: 
+            qiusuo-cluster:
+        volumes:
+            -  /Users/ryan.zheng/Karrier/qiusuo-backend/qiusuo-root/data/dev/cassandra:/var/lib/cassandra
+            - /Users/ryan.zheng/Karrier/qiusuo-backend/qiusuo-root/config/dev/cassandra:/etc/cassandra
+networks:
+    qiusuo-cluster:
+        ipam:
+            config:
+                - subnet: 172.20.0.0/16
