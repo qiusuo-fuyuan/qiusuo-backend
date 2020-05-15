@@ -11,6 +11,24 @@ services:
         volumes:
             -  /Users/ryan.zheng/Karrier/qiusuo-backend/qiusuo-root/data/dev/cassandra:/var/lib/cassandra
             - /Users/ryan.zheng/Karrier/qiusuo-backend/qiusuo-root/config/dev/cassandra:/etc/cassandra
+
+    mysql:
+        container_name: 'tech-blogs-mysql'
+        image: 'mysql:5.7'
+        environment:
+            MYSQL_ROOT_PASSWORD: openlearner
+            MYSQL_DATABASE: aiopenlearner
+            MYSQL_USER: openlearner
+            MYSQL_PASSWORD: 123456
+        ports:
+            - "4406:3306"
+    
+        networks: 
+            - esnet
+        volumes:
+            - ./data/db/mysql:/var/lib/mysql
+        command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+
 networks:
     qiusuo-cluster:
         ipam:

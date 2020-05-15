@@ -5,16 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.qiusuo</groupId>
-    <artifactId>qiusuo-parent-pom</artifactId>
+    <artifactId>qiusuo-root-pom</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>qa-parent</module>
-        <module>connect-parent</module>
-        <module>geekstreaming-parent</module>
+        <module>qiusuo-qa</module>
+        <module>qiusuo-community</module>
+        <module>qiusuo-geekstreaming</module>
         <module>core-parent</module>
-        <module>codingeditor-parent</module>
+        <module>qiusuo-coderunner</module>
     </modules>
 
     <parent>
