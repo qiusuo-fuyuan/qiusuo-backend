@@ -13,7 +13,7 @@
         <module>qiusuo-qa</module>
         <module>qiusuo-community</module>
         <module>qiusuo-geekstreaming</module>
-        <module>core-parent</module>
+        <module>core</module>
         <module>qiusuo-coderunner</module>
     </modules>
 
