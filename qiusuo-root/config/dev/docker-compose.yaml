@@ -7,27 +7,51 @@ services:
             - '7000:7000'
             - '9042:9042'
         networks: 
-            qiusuo-cluster:
+            - qiusuo-cluster
         volumes:
-            -  /Users/ryan.zheng/Karrier/qiusuo-backend/qiusuo-root/data/dev/cassandra:/var/lib/cassandra
-            - /Users/ryan.zheng/Karrier/qiusuo-backend/qiusuo-root/config/dev/cassandra:/etc/cassandra
+            -  ../../data/dev/cassandra:/var/lib/cassandra
+            -  ./cassandra:/etc/cassandra
 
     mysql:
-        container_name: 'tech-blogs-mysql'
-        image: 'mysql:5.7'
+        container_name: 'qiusuo-mysql'
+        image: 'mysql:8.0'
         environment:
-            MYSQL_ROOT_PASSWORD: openlearner
-            MYSQL_DATABASE: aiopenlearner
-            MYSQL_USER: openlearner
-            MYSQL_PASSWORD: 123456
+            MYSQL_ROOT_PASSWORD: qiusuo
+            MYSQL_DATABASE: qiusuo
+            MYSQL_USER: qiusuo
+            MYSQL_PASSWORD: qiusuo
         ports:
             - "4406:3306"
-    
         networks: 
-            - esnet
+            - qiusuo-cluster
         volumes:
-            - ./data/db/mysql:/var/lib/mysql
+            - ../../data/dev/mysql:/var/lib/mysql
         command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    redis:
+        container_name: 'qiusuo-redis'
+        image: 'redis:5.0'
+        networks:
+            - qiusuo-cluster
+        ports:
+            - "6479:6379"
+    elasticsearch:
+        container_name: 'qiusuo-elasticsearch'
+        image: 'elasticsearch:6.7.1'
+        networks:
+            - qiusuo-cluster
+        ports:
+            - "9500:9200"
+        volumes:
+            - ../../data/dev/elk:/var/lib/elasticsearch
+            - ./elk/elasticsearch.yml:/etc/elasticsearch/config/elasticsearch.yml
+        tty: true
+
+        deploy:
+            mode: 'replicated'
+            replicas: 1
+            resources:
+                limits:
+                    memory: 1g
 
 networks:
     qiusuo-cluster:
