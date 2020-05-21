@@ -15,6 +15,7 @@
         <module>qiusuo-geekstreaming</module>
         <module>core</module>
         <module>qiusuo-coderunner</module>
+        <module>nacosserver</module>
     </modules>
 
     <parent>
