@@ -1,4 +1,4 @@
-package com.qiusuo.community.chatroom.repositories;
+package com.qiusuo.community.chatroom.repository;
 
 import com.qiusuo.community.chatroom.model.CommunityRoom;
 import org.springframework.data.repository.CrudRepository;
