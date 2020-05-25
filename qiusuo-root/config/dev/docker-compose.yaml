@@ -28,6 +28,14 @@ services:
         image: 'redis:5.0'
         ports:
             - "6479:6379"
+    rocketmq-stomp:
+        build: .
+        image: rocketmq-stomp:v1
+        container_name: rabbitmq
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+
     elasticsearch:
         image: 'elasticsearch:6.7.1'
         container_name: 'qiusuo-elasticsearch'
