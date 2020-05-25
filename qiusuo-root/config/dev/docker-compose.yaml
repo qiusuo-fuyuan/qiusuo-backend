@@ -6,8 +6,6 @@ services:
         ports:
             - '7000:7000'
             - '9042:9042'
-        networks: 
-            - qiusuo-cluster
         volumes:
             -  ../../data/dev/cassandra:/var/lib/cassandra
             -  ./cassandra:/etc/cassandra
@@ -22,39 +20,28 @@ services:
             MYSQL_PASSWORD: qiusuo
         ports:
             - "4406:3306"
-        networks: 
-            - qiusuo-cluster
         volumes:
             - ../../data/dev/mysql:/var/lib/mysql
         command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
     redis:
         container_name: 'qiusuo-redis'
         image: 'redis:5.0'
-        networks:
-            - qiusuo-cluster
         ports:
             - "6479:6379"
     elasticsearch:
-        container_name: 'qiusuo-elasticsearch'
         image: 'elasticsearch:6.7.1'
-        networks:
-            - qiusuo-cluster
+        container_name: 'qiusuo-elasticsearch'
+        environment:
+            - node.name=es01
+            - cluster.name=es-docker-cluster
+            - cluster.initial_master_nodes=es01,es02,es03
         ports:
             - "9500:9200"
         volumes:
             - ../../data/dev/elk:/var/lib/elasticsearch
             - ./elk/elasticsearch.yml:/etc/elasticsearch/config/elasticsearch.yml
-        tty: true
-
-        deploy:
-            mode: 'replicated'
-            replicas: 1
-            resources:
-                limits:
-                    memory: 1g
-
 networks:
-    qiusuo-cluster:
-        ipam:
-            config:
-                - subnet: 172.20.0.0/16
+    default:
+        external:
+            name: dev_qiusuo-cluster
+

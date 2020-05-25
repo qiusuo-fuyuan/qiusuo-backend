@@ -8,9 +8,11 @@ import org.springframework.data.redis.core.RedisHash;
 
 import com.google.common.annotations.VisibleForTesting;
 
+import javax.persistence.Entity;
+
+
 @RedisHash("communityrooms")
 public class CommunityRoom {
-
     @Id
     private String id;
     private String name;
