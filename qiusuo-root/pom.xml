@@ -16,6 +16,9 @@
         <module>core</module>
         <module>qiusuo-coderunner</module>
         <module>nacosserver</module>
+        <module>eurekasvr</module>
+        <module>confsvg</module>
+        <module>confsvr</module>
     </modules>
 
     <parent>
