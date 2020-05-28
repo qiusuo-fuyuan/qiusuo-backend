@@ -1,12 +1,11 @@
 package com.qiusuo.community.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.google.common.annotations.VisibleForTesting;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
-import com.google.common.annotations.VisibleForTesting;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RedisHash("communityrooms")

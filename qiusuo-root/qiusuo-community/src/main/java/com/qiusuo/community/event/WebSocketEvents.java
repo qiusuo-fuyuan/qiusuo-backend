@@ -1,4 +1,4 @@
-package com.qiusuo.community.websocket;
+package com.qiusuo.community.event;
 
 import com.qiusuo.community.model.CommunityUser;
 import com.qiusuo.community.service.CommunityRoomService;

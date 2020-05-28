@@ -2,7 +2,7 @@ package com.qiusuo.community.model;
 
 import java.util.Date;
 
-public class CommunityUser  implements Comparable<CommunityUser> {
+public class CommunityUser implements Comparable<CommunityUser> {
 
     private String username;
     private Date joinedAt = new Date();
