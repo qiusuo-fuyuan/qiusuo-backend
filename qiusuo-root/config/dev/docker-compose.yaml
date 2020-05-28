@@ -27,7 +27,7 @@ services:
         container_name: 'qiusuo-redis'
         image: 'redis:5.0'
         ports:
-            - "6479:6379"
+            - "6379:6379"
     rocketmq-stomp:
         image: rocketmq-stomp:v1
         container_name: qiusuo-rabbitmq

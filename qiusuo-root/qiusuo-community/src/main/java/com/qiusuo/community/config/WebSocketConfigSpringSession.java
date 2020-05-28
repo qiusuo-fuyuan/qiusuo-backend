@@ -1,4 +1,4 @@
-package com.qiusuo.community.config.websocket;
+package com.qiusuo.community.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
