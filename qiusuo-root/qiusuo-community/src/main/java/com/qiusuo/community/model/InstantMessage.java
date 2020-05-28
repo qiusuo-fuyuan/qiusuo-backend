@@ -1,13 +1,8 @@
-package com.qiusuo.community.chatroom.model;
+package com.qiusuo.community.model;
 
 import com.google.common.base.Strings;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.google.common.base.Strings;
 import com.qiusuo.community.utils.SystemUsers;
-import org.springframework.data.cassandra.core.cql.Ordering;
-import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
-import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 import java.util.Date;

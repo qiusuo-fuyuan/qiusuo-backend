@@ -1,7 +1,7 @@
-package com.qiusuo.community.chatroom.websocket;
+package com.qiusuo.community.websocket;
 
-import com.qiusuo.community.chatroom.model.CommunityUser;
-import com.qiusuo.community.chatroom.service.CommunityRoomService;
+import com.qiusuo.community.model.CommunityUser;
+import com.qiusuo.community.service.CommunityRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;

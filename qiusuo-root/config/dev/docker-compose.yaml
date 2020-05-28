@@ -29,12 +29,12 @@ services:
         ports:
             - "6479:6379"
     rocketmq-stomp:
-        build: .
         image: rocketmq-stomp:v1
-        container_name: rabbitmq
+        container_name: qiusuo-rabbitmq
         ports:
             - "5672:5672"
             - "15672:15672"
+            - "61613:61613"
 
     elasticsearch:
         image: 'elasticsearch:6.7.1'

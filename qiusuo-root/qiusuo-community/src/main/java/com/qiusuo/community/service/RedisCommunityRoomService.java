@@ -1,9 +1,9 @@
-package com.qiusuo.community.chatroom.service;
+package com.qiusuo.community.service;
 
-import com.qiusuo.community.chatroom.model.CommunityRoom;
-import com.qiusuo.community.chatroom.model.CommunityUser;
-import com.qiusuo.community.chatroom.model.InstantMessage;
-import com.qiusuo.community.chatroom.repository.CommunityRoomRepository;
+import com.qiusuo.community.model.CommunityRoom;
+import com.qiusuo.community.model.CommunityUser;
+import com.qiusuo.community.model.InstantMessage;
+import com.qiusuo.community.repository.CommunityRoomRepository;
 import com.qiusuo.community.utils.Destinations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;

@@ -15,12 +15,13 @@
         <module>qiusuo-geekstreaming</module>
         <module>core</module>
         <module>qiusuo-coderunner</module>
-        <module>nacosserver</module>
         <module>eurekasvr</module>
-        <module>confsvg</module>
         <module>confsvr</module>
     </modules>
 
+    <properties>
+        <spring.cloud.version>Hoxton.SR4</spring.cloud.version>
+    </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -30,8 +31,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-alibaba-nacos-discovery -->
-
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

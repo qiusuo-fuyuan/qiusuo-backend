@@ -1,4 +1,4 @@
-package com.qiusuo.community.chatroom.model;
+package com.qiusuo.community.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.cassandra.core.cql.Ordering;

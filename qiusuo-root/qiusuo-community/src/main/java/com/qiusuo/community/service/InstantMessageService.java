@@ -1,6 +1,6 @@
-package com.qiusuo.community.chatroom.service;
+package com.qiusuo.community.service;
 
-import com.qiusuo.community.chatroom.model.InstantMessage;
+import com.qiusuo.community.model.InstantMessage;
 
 import java.util.List;
 

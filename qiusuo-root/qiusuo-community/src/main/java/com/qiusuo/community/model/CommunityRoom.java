@@ -1,4 +1,4 @@
-package com.qiusuo.community.chatroom.model;
+package com.qiusuo.community.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
 import com.google.common.annotations.VisibleForTesting;
-
-import javax.persistence.Entity;
 
 
 @RedisHash("communityrooms")
