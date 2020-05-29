@@ -28,7 +28,6 @@
         <version>2.2.1.RELEASE</version>
     </parent>
 
-
     <dependencyManagement>
         <dependencies>
             <dependency>
