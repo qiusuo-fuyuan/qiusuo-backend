@@ -1,3 +1,5 @@
+# Run the startup script to start all the containers
+
 # How to configure Cassandra Cluster
 
 

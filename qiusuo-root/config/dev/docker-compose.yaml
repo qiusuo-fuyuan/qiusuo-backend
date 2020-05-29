@@ -37,7 +37,7 @@ services:
             - "61613:61613"
 
     elasticsearch:
-        image: 'elasticsearch:latest'
+        image: 'elasticsearch:7.7.0'
         container_name: 'qiusuo-elasticsearch'
         environment:
             - node.name=es01
