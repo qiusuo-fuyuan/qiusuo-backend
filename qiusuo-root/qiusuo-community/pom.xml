@@ -13,6 +13,8 @@
 
 
     <dependencies>
+        <!--  There is no need to add the version, spring parent has defined all the versions. If we use
+        custom versions, there might be vesion conflicts -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-reactor-netty</artifactId>
@@ -26,13 +28,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-messaging</artifactId>
-            <version>5.2.6.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-websocket</artifactId>
-            <version>5.2.6.RELEASE</version>
         </dependency>
 
         <dependency>
