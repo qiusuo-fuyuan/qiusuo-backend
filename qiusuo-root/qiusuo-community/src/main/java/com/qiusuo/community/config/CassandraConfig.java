@@ -15,7 +15,7 @@ import java.util.List;
 public class CassandraConfig  extends AbstractCassandraConfiguration {
     @Override
     protected String getKeyspaceName() {
-        return "qiusuo_dev";
+        return "qiusuo_dev_test";
     }
 
     @Bean
