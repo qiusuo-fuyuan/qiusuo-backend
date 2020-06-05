@@ -18,8 +18,8 @@ public class CustomAuthenticationToken extends AbstractAuthenticationToken {
         super(authorities);
     }
 
-    CustomAuthenticationToken(String username,String password, String accessToken,UserType authenticationType,Collection<? extends GrantedAuthority> authorities)  {
-        super(authorities);
+    public CustomAuthenticationToken(String username,String password, String accessToken,UserType authenticationType)  {
+        super(null);
         this.username = username;
         this.accessToken = accessToken;
         this.authenticationType = authenticationType;
@@ -42,5 +42,9 @@ public class CustomAuthenticationToken extends AbstractAuthenticationToken {
 
     public String getAccessToken() {
         return accessToken;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

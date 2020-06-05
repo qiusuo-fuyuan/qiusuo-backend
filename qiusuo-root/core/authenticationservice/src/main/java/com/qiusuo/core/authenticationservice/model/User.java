@@ -1,5 +1,7 @@
 package com.qiusuo.core.authenticationservice.model;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import java.util.Collection;
 
+@Data
 @Entity
 public  class User {
     @Id
@@ -29,7 +32,7 @@ public  class User {
 
     private Boolean enabled;
 
-    private UserType socialUserType;
+    private UserType userType;
 
 
     @ManyToMany

@@ -1,0 +1,56 @@
+{
+    // Verwendet IntelliSense zum Ermitteln möglicher Attribute.
+    // Zeigen Sie auf vorhandene Attribute, um die zugehörigen Beschreibungen anzuzeigen.
+    // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-AuthenticationServiceApplication<authenticationservice>",
+            "request": "launch",
+            "mainClass": "com.qiusuo.core.authenticationservice.AuthenticationServiceApplication",
+            "projectName": "authenticationservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CodeRunnerApplication<coderunner>",
+            "request": "launch",
+            "mainClass": "com.qiusuo.coderunner.CodeRunnerApplication",
+            "projectName": "coderunner"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-QiuSuoCommunityApplication<community>",
+            "request": "launch",
+            "mainClass": "com.qiusuo.community.QiuSuoCommunityApplication",
+            "projectName": "community"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-QiuSuoEurekaServer<eurekasvr>",
+            "request": "launch",
+            "mainClass": "com.qiusuo.eurekasvr.QiuSuoEurekaServer",
+            "projectName": "eurekasvr"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-QiuSuoGeekStreamingApplication<geekstreaming>",
+            "request": "launch",
+            "mainClass": "com.qiusuo.geekstreaming.QiuSuoGeekStreamingApplication",
+            "projectName": "geekstreaming"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-QiuSuoQAApplication<qa>",
+            "request": "launch",
+            "mainClass": "com.qiusuo.qa.QiuSuoQAApplication",
+            "projectName": "qa"
+        }
+    ]
+}
