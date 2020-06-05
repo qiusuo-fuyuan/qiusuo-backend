@@ -5,8 +5,8 @@ import com.qiusuo.core.authenticationservice.model.QUser;
 import com.qiusuo.core.authenticationservice.model.User;
 import com.qiusuo.core.authenticationservice.model.UserType;
 import com.qiusuo.core.authenticationservice.repository.UserRepository;
-
 import com.querydsl.jpa.impl.JPAQueryFactory;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +32,7 @@ public class GithubAuthenticationStrategy {
         LOGGER.debug("authenticate via github account");
         String accessToken = authentication.getAccessToken();
         /*
+        TODO
         Step 1: Make a request to Github with the user and accessToken
         Step 2: If it succeeds, then persist the user and accessToken in database
         First check if the user already exist in DB. if it doesn't, then insert new user.
@@ -49,7 +50,11 @@ public class GithubAuthenticationStrategy {
             newUser.setEnabled(true);
             newUser.setName(username);
             newUser.setUserType(UserType.GITHUB);
+            newUser.setEncryptedPassword(accessToken);
             userRepository.save(newUser);
+        } else {
+            existingUser.setEncryptedPassword(accessToken);
+            userRepository.save(existingUser);
         }
         return authentication;
     }

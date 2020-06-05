@@ -4,6 +4,7 @@ import com.qiusuo.core.authenticationservice.config.CustomAuthenticationToken;
 import com.qiusuo.core.authenticationservice.config.JwtUserDetailsService;
 import com.qiusuo.core.authenticationservice.model.UserType;
 import com.qiusuo.core.authenticationservice.util.JwtRequest;
+import com.qiusuo.core.authenticationservice.util.JwtResponse;
 import com.qiusuo.core.authenticationservice.util.JwtTokenUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class LoginController {
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
-        return null;
+        return ResponseEntity.ok(new JwtResponse(token));
     }
 
     private void authenticate(String username, String password,String accessToken,UserType usertype) throws Exception {
