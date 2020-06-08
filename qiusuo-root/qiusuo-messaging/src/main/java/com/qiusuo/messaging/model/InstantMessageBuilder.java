@@ -1,4 +1,4 @@
-package com.qiusuo.community.chat.model;
+package com.qiusuo.messaging.model;
 
 
 import com.qiusuo.community.chat.utils.SystemUsers;

@@ -1,4 +1,4 @@
-package com.qiusuo.community.chat.config;
+package com.qiusuo.messaging.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

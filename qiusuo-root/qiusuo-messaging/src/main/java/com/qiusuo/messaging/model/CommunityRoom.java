@@ -1,10 +1,9 @@
-package com.qiusuo.community.chat.model;
+package com.qiusuo.messaging.model;
 
 import com.google.common.annotations.VisibleForTesting;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
-import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 

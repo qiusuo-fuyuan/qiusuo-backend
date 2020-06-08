@@ -1,4 +1,4 @@
-package com.qiusuo.community.chat.model;
+package com.qiusuo.messaging.model;
 
 import java.util.Date;
 
@@ -8,7 +8,6 @@ public class CommunityUser implements Comparable<CommunityUser> {
     private Date joinedAt = new Date();
 
     public CommunityUser() {
-
     }
 
     public CommunityUser(String username) {

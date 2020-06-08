@@ -1,4 +1,4 @@
-package com.qiusuo.community.chat.config;
+package com.qiusuo.messaging.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

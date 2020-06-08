@@ -17,6 +17,7 @@
         <module>qiusuo-coderunner</module>
         <module>eurekasvr</module>
         <module>confsvr</module>
+        <module>qiusuo-messaging</module>
     </modules>
 
     <properties>

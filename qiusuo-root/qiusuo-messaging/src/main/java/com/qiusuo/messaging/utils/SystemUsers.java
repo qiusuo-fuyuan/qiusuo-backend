@@ -1,4 +1,4 @@
-package com.qiusuo.community.chat.utils;
+package com.qiusuo.messaging.utils;
 
 public enum SystemUsers {
 

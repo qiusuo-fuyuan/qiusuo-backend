@@ -1,6 +1,7 @@
-package com.qiusuo.community.chat.service;
+package com.qiusuo.messaging.service;
 
 
+import com.qiusuo.community.chat.model.CommunityRoom;
 import com.qiusuo.community.chat.model.CommunityUser;
 import com.qiusuo.community.chat.model.InstantMessage;
 import com.qiusuo.community.chat.repository.CommunityRoomRepository;
@@ -8,7 +9,6 @@ import com.qiusuo.community.chat.utils.Destinations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
-import com.qiusuo.community.chat.model.CommunityRoom;
 
 import java.util.List;
 
