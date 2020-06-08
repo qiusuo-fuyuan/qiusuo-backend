@@ -1,7 +1,7 @@
 package com.qiusuo.community.authentication.privider;
 
-import com.qiusuo.core.authenticationservice.adaptor.AuthenticationAdapter;
-import com.qiusuo.core.authenticationservice.config.CustomAuthenticationToken;
+import com.qiusuo.community.authentication.adaptor.AuthenticationAdapter;
+import com.qiusuo.community.authentication.config.CustomAuthenticationToken;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
