@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import java.util.Collection;
 
@@ -34,17 +35,6 @@ public  class User {
 
     private UserType userType;
 
-
-    @ManyToMany
-    @JoinTable(
-            name = "users_communities",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private Collection<Community> subscribedCommunities;
-
-
     @ManyToMany
     @JoinTable(
             name = "users_roles",
@@ -53,4 +43,17 @@ public  class User {
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "users_communities",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "community_id", referencedColumnName = "id"))
+    private Collection<Community> subscribedCommunities;
+
+    @OneToOne
+    private Profile userProfile;
 }
