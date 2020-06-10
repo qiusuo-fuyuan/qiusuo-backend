@@ -18,6 +18,7 @@
         <module>eurekasvr</module>
         <module>confsvr</module>
         <module>qiusuo-messaging</module>
+        <module>searchservice</module>
     </modules>
 
     <properties>
