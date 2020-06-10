@@ -1,7 +1,7 @@
 package com.qiusuo.community.authentication.filter;
 
 
-import com.qiusuo.core.authenticationservice.util.JwtTokenUtil;
+import com.qiusuo.community.authentication.util.JwtTokenUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

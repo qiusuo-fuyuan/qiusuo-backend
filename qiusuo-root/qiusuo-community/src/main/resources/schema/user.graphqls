@@ -1,0 +1,13 @@
+type User {
+    id: ID!
+    name: String!
+}
+
+type UserRegisterInput {
+    name: String!
+    password: String!
+}
+
+type UserMutation {
+    registerUser(name: String): User!
+}

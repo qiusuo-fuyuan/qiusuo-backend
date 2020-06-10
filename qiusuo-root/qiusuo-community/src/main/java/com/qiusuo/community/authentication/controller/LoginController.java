@@ -1,11 +1,12 @@
 package com.qiusuo.community.authentication.controller;
 
-import com.qiusuo.core.authenticationservice.config.CustomAuthenticationToken;
-import com.qiusuo.core.authenticationservice.config.JwtUserDetailsService;
-import com.qiusuo.core.authenticationservice.model.UserType;
-import com.qiusuo.core.authenticationservice.util.JwtRequest;
-import com.qiusuo.core.authenticationservice.util.JwtResponse;
-import com.qiusuo.core.authenticationservice.util.JwtTokenUtil;
+
+import com.qiusuo.community.authentication.config.CustomAuthenticationToken;
+import com.qiusuo.community.authentication.config.JwtUserDetailsService;
+import com.qiusuo.community.authentication.util.JwtRequest;
+import com.qiusuo.community.authentication.util.JwtResponse;
+import com.qiusuo.community.authentication.util.JwtTokenUtil;
+import com.qiusuo.community.domain.model.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -39,7 +40,7 @@ public class LoginController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    private void authenticate(String username, String password,String accessToken,UserType usertype) throws Exception {
+    private void authenticate(String username, String password, String accessToken, UserType usertype) throws Exception {
         try {
             authenticationManager.authenticate(new CustomAuthenticationToken(username, password, accessToken,usertype));
         } catch (DisabledException e) {

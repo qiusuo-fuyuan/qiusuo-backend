@@ -1,6 +1,6 @@
 package com.qiusuo.community.authentication.config;
 
-import com.qiusuo.core.authenticationservice.model.UserType;
+import com.qiusuo.community.domain.model.UserType;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 

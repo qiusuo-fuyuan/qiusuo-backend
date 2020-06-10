@@ -1,6 +1,6 @@
 package com.qiusuo.community.authentication.util;
 
-import com.qiusuo.core.authenticationservice.model.UserType;
+import com.qiusuo.community.domain.model.UserType;
 import lombok.Data;
 
 import java.io.Serializable;

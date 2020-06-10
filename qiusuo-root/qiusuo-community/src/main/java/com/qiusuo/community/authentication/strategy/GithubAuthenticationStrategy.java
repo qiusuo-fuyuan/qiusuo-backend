@@ -1,10 +1,10 @@
 package com.qiusuo.community.authentication.strategy;
 
-import com.qiusuo.core.authenticationservice.config.CustomAuthenticationToken;
-import com.qiusuo.core.authenticationservice.model.QUser;
-import com.qiusuo.core.authenticationservice.model.User;
-import com.qiusuo.core.authenticationservice.model.UserType;
-import com.qiusuo.core.authenticationservice.repository.UserRepository;
+
+import com.qiusuo.community.authentication.config.CustomAuthenticationToken;
+import com.qiusuo.community.authentication.repository.UserRepository;
+import com.qiusuo.community.domain.model.User;
+import com.qiusuo.community.domain.model.UserType;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +30,7 @@ public class GithubAuthenticationStrategy {
     public Authentication authenticate(CustomAuthenticationToken authentication) {
         LOGGER.debug("authenticate via github account");
         String accessToken = authentication.getAccessToken();
+
         /*
         TODO
         Step 1: Make a request to Github with the user and accessToken
@@ -37,7 +38,7 @@ public class GithubAuthenticationStrategy {
         First check if the user already exist in DB. if it doesn't, then insert new user.
         If the user already exists in DB, then update the accessToken.
         If the accessToken is invalid, then we should throw one exception for BadCredential.
-         */
+
         String username = authentication.getUsername();
         QUser user = QUser.user;
         User existingUser  = jpaQueryFactory.selectFrom(user)
@@ -56,5 +57,7 @@ public class GithubAuthenticationStrategy {
             userRepository.save(existingUser);
         }
         return authentication;
+         */
+        return null;
     }
 }
