@@ -18,7 +18,7 @@ public class GithubGateKeeperController {
     @Value("${oauth_client_secret}")
     private String client_secret;
 
-    @Value("${token_endpoint")
+    @Value("${token_endpoint}")
     private String tokenEndpoint;
 
     @RequestMapping("/github/accesstoken")
