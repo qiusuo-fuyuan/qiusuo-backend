@@ -1,8 +1,9 @@
 package com.qiusuo.messaging.service;
 
-import com.qiusuo.community.chat.model.CommunityRoom;
-import com.qiusuo.community.chat.model.InstantMessage;
-import com.qiusuo.community.chat.repository.InstantMessageRepository;
+
+import com.qiusuo.messaging.model.CommunityRoom;
+import com.qiusuo.messaging.model.InstantMessage;
+import com.qiusuo.messaging.repository.InstantMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.qiusuo.messaging.event;
 
-import com.qiusuo.community.chat.model.CommunityUser;
-import com.qiusuo.community.chat.service.CommunityRoomService;
+import com.qiusuo.messaging.model.CommunityUser;
+import com.qiusuo.messaging.service.CommunityRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;

@@ -1,7 +1,8 @@
 package com.qiusuo.messaging.repository;
 
-import com.qiusuo.community.chat.model.InstantMessage;
-import com.qiusuo.community.chat.model.InstantMessageKey;
+
+import com.qiusuo.messaging.model.InstantMessage;
+import com.qiusuo.messaging.model.InstantMessageKey;
 import org.springframework.data.cassandra.repository.CassandraRepository;
 
 import java.util.List;

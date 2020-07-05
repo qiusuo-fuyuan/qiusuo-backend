@@ -1,8 +1,9 @@
 package com.qiusuo.messaging.service;
 
-import com.qiusuo.community.chat.model.CommunityRoom;
-import com.qiusuo.community.chat.model.CommunityUser;
-import com.qiusuo.community.chat.model.InstantMessage;
+
+import com.qiusuo.messaging.model.CommunityRoom;
+import com.qiusuo.messaging.model.CommunityUser;
+import com.qiusuo.messaging.model.InstantMessage;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.qiusuo.messaging.model;
 
 import com.google.common.base.Strings;
-import com.qiusuo.community.chat.utils.SystemUsers;
+import com.qiusuo.messaging.utils.SystemUsers;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 

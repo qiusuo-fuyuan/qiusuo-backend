@@ -1,7 +1,7 @@
 package com.qiusuo.messaging.model;
 
 
-import com.qiusuo.community.chat.utils.SystemUsers;
+import com.qiusuo.messaging.utils.SystemUsers;
 
 public class InstantMessageBuilder {
 
