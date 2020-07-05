@@ -12,13 +12,13 @@
     <modules>
         <module>qiusuo-qa</module>
         <module>qiusuo-community</module>
-        <module>qiusuo-geekstreaming</module>
+        <module>qiusuo-streamingsvr</module>
         <module>core</module>
         <module>qiusuo-coderunner</module>
         <module>eurekasvr</module>
         <module>confsvr</module>
-        <module>qiusuo-messaging</module>
-        <module>searchservice</module>
+        <module>qiusuo-messagingsvr</module>
+        <module>qiusuo-searchservice</module>
     </modules>
 
     <properties>
