@@ -3,9 +3,7 @@ package com.qiusuo.community.authentication.strategy;
 
 import com.qiusuo.community.authentication.config.CustomAuthenticationToken;
 import com.qiusuo.community.authentication.repository.UserRepository;
-import com.qiusuo.community.domain.model.Role;
-import com.qiusuo.community.domain.model.User;
-import com.qiusuo.community.domain.model.UserType;
+import com.qiusuo.community.domain.model.*;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
