@@ -1,12 +1,15 @@
 package com.qiusuo.community.authentication.filter;
 
 
+import com.qiusuo.community.authentication.config.CustomAuthenticationToken;
+import com.qiusuo.community.authentication.config.JwtUserDetailsService;
 import com.qiusuo.community.authentication.util.JwtTokenUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -18,12 +21,17 @@ import java.io.IOException;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
+    private String username;
     Logger LOGGER = LoggerFactory.getLogger(JwtRequestFilter.class);
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private JwtTokenUtil jwtTokenUtil;
+    private JwtUserDetailsService jwtUserDetailsService;
+
+    public JwtRequestFilter(JwtTokenUtil jwtTokenUtil, JwtUserDetailsService jwtUserDetailsService) {
+        this.jwtTokenUtil = jwtTokenUtil;
+        this.jwtUserDetailsService = jwtUserDetailsService;
+    }
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
@@ -37,6 +45,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
             jwtToken = requestTokenHeader.substring(7);
             try {
+                //What i need to do here is to put the UserDetails information in the SecurityContextHolder.
                 username = jwtTokenUtil.getUsernameFromToken(jwtToken);
             } catch (IllegalArgumentException e) {
                 LOGGER.error("Unable to get JWT Token");
@@ -45,6 +54,16 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             }
         } else {
             LOGGER.warn("JWT Token does not begin with Bearer String");
+        }
+        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            UserDetails userDetails = this.jwtUserDetailsService.loadUserByUsername(username);
+            if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
+                CustomAuthenticationToken customAuthenticationToken = new CustomAuthenticationToken(
+                        userDetails, userDetails.getAuthorities());
+                customAuthenticationToken
+                        .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(customAuthenticationToken);
+            }
         }
         chain.doFilter(request, response);
     }

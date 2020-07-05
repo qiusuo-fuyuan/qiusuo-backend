@@ -3,6 +3,7 @@ package com.qiusuo.community.authentication.strategy;
 
 import com.qiusuo.community.authentication.config.CustomAuthenticationToken;
 import com.qiusuo.community.authentication.repository.UserRepository;
+import com.qiusuo.community.domain.model.Role;
 import com.qiusuo.community.domain.model.User;
 import com.qiusuo.community.domain.model.UserType;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 
+import java.util.ArrayList;
+
 /*
 What we will do is to use HttpClient to send one query request to github using the accessToken. If it returns
 successful, then authentication sucess
@@ -19,45 +22,47 @@ successful, then authentication sucess
 @Configuration
 public class GithubAuthenticationStrategy {
     private static final Logger LOGGER = LoggerFactory.getLogger(GithubAuthenticationStrategy.class);
-    @Autowired
-    JPAQueryFactory jpaQueryFactory;
 
-    @Autowired
+    JPAQueryFactory jpaQueryFactory;
     UserRepository userRepository;
+
+    public GithubAuthenticationStrategy(JPAQueryFactory jpaQueryFactory, UserRepository userRepository) {
+        this.jpaQueryFactory = jpaQueryFactory;
+        this.userRepository = userRepository;
+    }
 
     /*
      */
     public Authentication authenticate(CustomAuthenticationToken authentication) {
         LOGGER.debug("authenticate via github account");
-        String accessToken = authentication.getAccessToken();
-
-        /*
-        TODO
-        Step 1: Make a request to Github with the user and accessToken
-        Step 2: If it succeeds, then persist the user and accessToken in database
-        First check if the user already exist in DB. if it doesn't, then insert new user.
-        If the user already exists in DB, then update the accessToken.
-        If the accessToken is invalid, then we should throw one exception for BadCredential.
-
         String username = authentication.getUsername();
         QUser user = QUser.user;
-        User existingUser  = jpaQueryFactory.selectFrom(user)
+        User existingUser = jpaQueryFactory.selectFrom(user)
                 .where(user.name.eq(username))
                 .fetchOne();
 
-        if(existingUser == null) {
+        if (existingUser == null) {
             User newUser = new User();
             newUser.setEnabled(true);
             newUser.setName(username);
             newUser.setUserType(UserType.GITHUB);
-            newUser.setEncryptedPassword(accessToken);
+            newUser.setEncryptedPassword(authentication.getUserId());
+            newUser.setRoles(getRoles("ROLE_USER"));
             userRepository.save(newUser);
         } else {
-            existingUser.setEncryptedPassword(accessToken);
             userRepository.save(existingUser);
         }
         return authentication;
-         */
-        return null;
+    }
+
+    private ArrayList<Role> getRoles(String roleName) {
+        QRole role = QRole.role;
+        Role roleUser = jpaQueryFactory.selectFrom(role).where(role.name.eq(roleName)).fetchOne();
+        ArrayList<Role> roles = new ArrayList<Role>() {
+            {
+                add(roleUser);
+            }
+        };
+        return roles;
     }
 }

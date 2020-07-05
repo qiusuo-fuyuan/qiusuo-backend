@@ -1,7 +1,7 @@
 package com.qiusuo.community.graphql.query;
 
 import com.qiusuo.community.authentication.util.HttpRequestHelper;
-import com.qiusuo.community.domain.exception.QiuSuoException;
+import com.qiusuo.community.exception.QiuSuoException;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

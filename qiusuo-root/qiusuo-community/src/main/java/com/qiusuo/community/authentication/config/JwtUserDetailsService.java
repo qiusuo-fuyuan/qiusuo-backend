@@ -1,25 +1,24 @@
 package com.qiusuo.community.authentication.config;
 
 
+import com.qiusuo.community.domain.model.Role;
 import com.qiusuo.community.domain.model.User;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
-    @Autowired
-    JPAQueryFactory jpaQueryFactory;
+    private JPAQueryFactory jpaQueryFactory;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    public JwtUserDetailsService(JPAQueryFactory jpaQueryFactory) {
+        this.jpaQueryFactory = jpaQueryFactory;
+    }
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        /*
+
         QUser userToQuery = QUser.user;
         User userResult = jpaQueryFactory.selectFrom(userToQuery).where(userToQuery.name.eq(username)).fetchOne();
 
@@ -31,10 +30,7 @@ public class JwtUserDetailsService implements UserDetailsService {
         } else {
             throw new UsernameNotFoundException("User not found.");
         }
-
         return builder.build();
-         */
-        return null;
     }
-    
+
 }

@@ -10,6 +10,7 @@ import org.springframework.security.core.AuthenticationException;
 @Configuration
 public class CustomAuthenticationProvider implements AuthenticationProvider {
     AuthenticationAdapter authenticationAdapter;
+
     CustomAuthenticationProvider(AuthenticationAdapter authenticationAdapter) {
         this.authenticationAdapter = authenticationAdapter;
     }

@@ -1,7 +1,7 @@
 package com.qiusuo.community.authentication.util;
 
 
-import com.qiusuo.community.domain.exception.QiuSuoException;
+import com.qiusuo.community.exception.QiuSuoException;
 
 import java.io.IOException;
 import java.net.URI;

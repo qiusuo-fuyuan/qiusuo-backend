@@ -1,4 +1,4 @@
-package com.qiusuo.community.domain.exception;
+package com.qiusuo.community.exception;
 
 public class QiuSuoException extends Exception {
     public QiuSuoException(String message) {

@@ -10,11 +10,12 @@ import org.springframework.security.core.Authentication;
 public class CellphoneAuthenticationStrategy {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CellphoneAuthenticationStrategy.class);
+
     /*
      */
     public Authentication authenticate(CustomAuthenticationToken authentication) {
         LOGGER.debug("authenticate via cellphone account");
-        String accessToken = authentication.getAccessToken();
+        String accessToken = authentication.getUsername();
         //call cellphone verification code.
         return authentication;
     }
