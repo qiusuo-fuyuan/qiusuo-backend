@@ -1,4 +1,4 @@
-package com.qiusuo.qa.domain.model;
+package com.qiusuo.qaservice.domain.model;
 
 import lombok.Data;
 

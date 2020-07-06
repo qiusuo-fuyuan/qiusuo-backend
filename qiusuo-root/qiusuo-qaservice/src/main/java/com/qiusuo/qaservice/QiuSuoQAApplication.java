@@ -1,4 +1,4 @@
-package com.qiusuo.qa;
+package com.qiusuo.qaservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
