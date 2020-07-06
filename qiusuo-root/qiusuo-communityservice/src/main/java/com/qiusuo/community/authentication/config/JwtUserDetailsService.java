@@ -1,6 +1,7 @@
 package com.qiusuo.community.authentication.config;
 
 
+import com.qiusuo.community.domain.model.QUser;
 import com.qiusuo.community.domain.model.Role;
 import com.qiusuo.community.domain.model.User;
 import com.querydsl.jpa.impl.JPAQueryFactory;
