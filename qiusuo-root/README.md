@@ -1,4 +1,4 @@
-# How to build qiusuo-messagingsrv
+# How to build  qiusuo-messagingsrv
 Step 1:Go to folder qiusuo-root/config/dev/rabbitmq. 
 run docker-compose build to build the rabbitmq docker image
 
