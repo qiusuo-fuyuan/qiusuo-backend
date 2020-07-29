@@ -1,5 +1,7 @@
-**/nacos-docker
 build
 target
 **/*.iml
 .idea
+generated
+out
+.gradle
