@@ -11,19 +11,12 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'maven-publish'
 
-    /*repositories {
+    repositories {
         //mavenLocal()
-        maven {
-            allowInsecureProtocol true
-            url = uri('http://scm0.access.nsn.com/nexus/content/groups/public/')
-        }
+        mavenCentral()
+    }
 
-        maven {
-            url = uri('http://repo.maven.apache.org/maven2')
-        }
-    }*/
-
-    sourceCompatibility = '1.8'
+    sourceCompatibility = 11
 
     publishing {
         publications {
