@@ -28,7 +28,9 @@ dependencies {
     implementation 'mysql:mysql-connector-java:8.0.20'
     implementation 'com.graphql-java-kickstart:graphiql-spring-boot-starter:7.0.1'
     implementation 'com.graphql-java-kickstart:graphql-java-tools:6.0.2'
-    compileOnly "javax.inject:javax.inject:1"
+    implementation "javax.inject:javax.inject:1"
+    implementation  "javax.xml.bind:jaxb-api:2.3.1"
+
 
     runtime files("config")
 }
