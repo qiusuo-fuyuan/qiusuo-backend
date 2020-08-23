@@ -5,3 +5,4 @@ target
 generated
 out
 .gradle
+**/logs
