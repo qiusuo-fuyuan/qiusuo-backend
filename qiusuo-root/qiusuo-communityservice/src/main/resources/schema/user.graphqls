@@ -3,11 +3,11 @@ type User {
     name: String!
 }
 
-type UserRegisterInput {
+input UserRegistrationInput {
     name: String!
     password: String!
 }
 
 type UserMutation extend type Mutation{
-    registerUser(name: String): User!
+    registerUser(registrationInfo: UserRegistrationInput): User!
 }
