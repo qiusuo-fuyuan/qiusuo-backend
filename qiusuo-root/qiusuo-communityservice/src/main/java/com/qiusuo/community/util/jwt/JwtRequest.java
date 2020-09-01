@@ -6,16 +6,17 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class JwtRequest implements Serializable {
-    private static final long serialVersionUID = 5926468583005150707L;
+public class JwtRequest {
     private String username;
     private String password;
     private UserType usertype;
 
-    //accessToken could either be github accessToken,could also be wechat accessToken
-    private String accessToken;
+    //userId is from Github/Wechat User
+    private String userId;
     private String phoneNumber;
 
     //phone number verification code if login via phone.
     private String verificationCode;
+
+    private String avatarUrl;
 }
