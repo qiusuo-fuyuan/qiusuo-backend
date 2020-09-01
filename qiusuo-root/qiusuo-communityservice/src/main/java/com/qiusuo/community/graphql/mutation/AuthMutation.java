@@ -2,9 +2,9 @@ package com.qiusuo.community.graphql.mutation;
 
 import com.qiusuo.community.authentication.config.CustomAuthenticationToken;
 import com.qiusuo.community.authentication.config.JwtUserDetailsService;
-import com.qiusuo.community.authentication.util.JwtRequest;
-import com.qiusuo.community.authentication.util.JwtResponse;
-import com.qiusuo.community.authentication.util.JwtTokenUtil;
+import com.qiusuo.community.util.jwt.JwtRequest;
+import com.qiusuo.community.util.jwt.JwtResponse;
+import com.qiusuo.community.util.jwt.JwtTokenUtil;
 import com.qiusuo.community.domain.model.UserType;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import org.springframework.beans.factory.annotation.Autowired;

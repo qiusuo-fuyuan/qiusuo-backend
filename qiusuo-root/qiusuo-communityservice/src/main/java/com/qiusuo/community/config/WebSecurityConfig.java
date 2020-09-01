@@ -1,6 +1,7 @@
-package com.qiusuo.community.authentication.config;
+package com.qiusuo.community.config;
 
 
+import com.qiusuo.community.authentication.config.JwtAuthenticationEntryPoint;
 import com.qiusuo.community.authentication.filter.JwtRequestFilter;
 import com.qiusuo.community.authentication.privider.CustomAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;

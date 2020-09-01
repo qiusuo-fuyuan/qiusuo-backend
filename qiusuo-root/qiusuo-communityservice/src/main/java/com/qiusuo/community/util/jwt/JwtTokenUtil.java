@@ -1,4 +1,4 @@
-package com.qiusuo.community.authentication.util;
+package com.qiusuo.community.util.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

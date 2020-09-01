@@ -2,7 +2,7 @@ package com.qiusuo.community.authentication.strategy;
 
 
 import com.qiusuo.community.authentication.config.CustomAuthenticationToken;
-import com.qiusuo.community.authentication.repository.UserRepository;
+import com.qiusuo.community.domain.repository.UserRepository;
 import com.qiusuo.community.domain.model.*;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.slf4j.Logger;

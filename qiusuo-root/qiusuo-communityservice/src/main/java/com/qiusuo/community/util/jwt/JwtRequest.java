@@ -1,4 +1,4 @@
-package com.qiusuo.community.authentication.util;
+package com.qiusuo.community.util.jwt;
 
 import com.qiusuo.community.domain.model.UserType;
 import lombok.Data;
