@@ -1,4 +1,4 @@
-package com.qiusuo.community.authentication.util;
+package com.qiusuo.community.util.jwt;
 
 
 import java.io.Serializable;

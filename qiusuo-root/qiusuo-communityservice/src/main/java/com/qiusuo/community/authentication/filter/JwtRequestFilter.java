@@ -3,7 +3,7 @@ package com.qiusuo.community.authentication.filter;
 
 import com.qiusuo.community.authentication.config.CustomAuthenticationToken;
 import com.qiusuo.community.authentication.config.JwtUserDetailsService;
-import com.qiusuo.community.authentication.util.JwtTokenUtil;
+import com.qiusuo.community.util.jwt.JwtTokenUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

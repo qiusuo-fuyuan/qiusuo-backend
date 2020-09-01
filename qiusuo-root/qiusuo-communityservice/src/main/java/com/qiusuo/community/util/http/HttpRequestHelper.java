@@ -1,4 +1,4 @@
-package com.qiusuo.community.authentication.util;
+package com.qiusuo.community.util.http;
 
 
 import com.qiusuo.community.exception.QiuSuoException;
