@@ -22,18 +22,24 @@ public  class User {
     private Long id;
 
     @Column(unique = true)
+    private String userId;
+
+    @Column(unique = true)
     private String name;
 
     @Column(unique = true)
     private String phoneNumber;
 
     /**
+     * the user password is encrypted when stored in database
      */
     private String encryptedPassword;
 
     private Boolean enabled;
 
     private UserType userType;
+
+    private String avatarUrl;
 
     @ManyToMany
     @JoinTable(

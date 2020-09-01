@@ -3,7 +3,6 @@ package com.qiusuo.messaging.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.cassandra.config.AbstractCassandraConfiguration;
-import org.springframework.data.cassandra.config.CassandraClusterFactoryBean;
 import org.springframework.data.cassandra.config.SchemaAction;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
@@ -16,16 +15,6 @@ public class CassandraConfig  extends AbstractCassandraConfiguration {
     @Override
     protected String getKeyspaceName() {
         return "qiusuo_dev_test";
-    }
-
-    @Bean
-    public CassandraClusterFactoryBean cluster() {
-        CassandraClusterFactoryBean cluster = super.cluster();
-
-        cluster.setContactPoints("127.0.0.1");
-        cluster.setPort(9042);
-        cluster.setJmxReportingEnabled(false);
-        return cluster;
     }
 
     @Override

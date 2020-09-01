@@ -4,7 +4,8 @@ input JwtRequest {
     phoneNumber: String
     verificationCode: String
     usertype: String!
-    accessToken: String!
+    userId: String!
+    avatarUrl: String!
 }
 
 type JwtResponse {
@@ -12,5 +13,5 @@ type JwtResponse {
 }
 
 type AuthMutation extend type Mutation {
-    createToken(authInput: JwtRequest!): JwtResponse!
+    createJwtToken(authInput: JwtRequest!): JwtResponse!
 }

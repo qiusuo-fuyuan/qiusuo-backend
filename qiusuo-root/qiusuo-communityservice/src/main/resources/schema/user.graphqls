@@ -1,13 +1,18 @@
 type User {
     id: ID!
     name: String!
+    avatarUrl: String
 }
 
-input UserRegistrationInput {
+type UserRegisterInput {
     name: String!
     password: String!
 }
 
+type UserQuery extend type Query {
+    userDetails: User!
+}
+
 type UserMutation extend type Mutation{
-    registerUser(registrationInfo: UserRegistrationInput): User!
+    registerUser(name: String): User!
 }
