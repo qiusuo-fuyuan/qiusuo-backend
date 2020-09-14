@@ -6,4 +6,3 @@ generated
 out
 .gradle
 **/logs
-**/config.properties
