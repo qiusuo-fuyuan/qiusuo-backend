@@ -1,7 +1,7 @@
 package com.qiusuo.messaging.service;
 
 
-import com.qiusuo.messaging.model.CommunityRoom;
+import com.qiusuo.messaging.model.Community;
 import com.qiusuo.messaging.model.InstantMessage;
 import com.qiusuo.messaging.repository.InstantMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,19 +11,21 @@ import java.util.List;
 
 @Service
 public class CassandraInstantMessageService implements InstantMessageService {
-
-    @Autowired
     private InstantMessageRepository instantMessageRepository;
+    private CommunityService communityService;
 
-    @Autowired
-    private CommunityRoomService communityRoomService;
+    public CassandraInstantMessageService(InstantMessageRepository instantMessageRepository,
+                                          CommunityService communityService) {
+        this.instantMessageRepository = instantMessageRepository;
+        this.communityService = communityService;
+    }
 
     @Override
     public void appendInstantMessageToConversations(InstantMessage instantMessage) {
         if (instantMessage.isFromAdmin() || instantMessage.isPublic()) {
-            CommunityRoom communityRoom = communityRoomService.findById(instantMessage.getChatRoomId());
+            Community community = communityService.findById(instantMessage.getChatRoomId());
 
-            communityRoom.getConnectedUsers().forEach(connectedUser -> {
+            community.getConnectedUsers().forEach(connectedUser -> {
                 instantMessage.setUsername(connectedUser.getUsername());
                 instantMessageRepository.save(instantMessage);
             });

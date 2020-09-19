@@ -1,0 +1,21 @@
+type Community {
+    id: ID!
+    title: String!
+    description: String!
+    avatarUrl: String!
+    tags: [String]!
+    channels: [Channel]!
+}
+
+
+input CreateCommunityInput {
+    ownerId: String!
+    title: String!
+    description: String!
+    tags: [String]!
+    avatarUrl: String
+}
+
+type CommunityMutation extend type Mutation {
+    createCommunity(createCommunityInput: CreateCommunityInput!): Community!
+}
