@@ -20,8 +20,7 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
                 .where(user.userId.eq(userId))
                 .fetchOne();
         if(existingUser == null) {
-            return null;
-            //throw new UsernameNotFoundException(String.format("user with userId=%s not found", userId));
+            throw new UsernameNotFoundException(String.format("user with userId=%s not found", userId));
         }
         return existingUser;
     }

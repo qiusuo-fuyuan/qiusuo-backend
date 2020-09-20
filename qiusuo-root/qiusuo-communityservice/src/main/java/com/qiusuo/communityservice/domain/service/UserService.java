@@ -4,6 +4,7 @@ import com.qiusuo.communityservice.security.authentication.QiuSuoAuthenticationT
 import com.qiusuo.communityservice.domain.model.Community;
 import com.qiusuo.communityservice.domain.model.User;
 import com.qiusuo.communityservice.domain.repository.UserRepository;
+import org.hibernate.Hibernate;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,10 +30,11 @@ public class UserService {
     public Collection<Community> getCommunitiesForUserId(String userId) {
         User user = userRepository.findUserByUserId(userId);
         /*here, it actually returns the proxy. Only when we try to fetch
-        one of those values, then Hibernate will use the current session
-        to fetch the values.
+        one of those values, Hibernate.initialize will intiialize lazy objects
         */
-        user.getSubscribedCommunities().size();//TODO change later.
+        user.getSubscribedCommunities().forEach( community -> {
+            Hibernate.initialize(community.getChannels());
+        });
         return user.getSubscribedCommunities();
     }
 
@@ -53,7 +55,7 @@ public class UserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             QiuSuoAuthenticationToken qiuSuoAuthenticationToken = (QiuSuoAuthenticationToken) authentication;
-            return userRepository.findUserByUserId(qiuSuoAuthenticationToken.getUsername());
+            return userRepository.findUserByUserId(qiuSuoAuthenticationToken.getUserId());
         }
         else {
             /*

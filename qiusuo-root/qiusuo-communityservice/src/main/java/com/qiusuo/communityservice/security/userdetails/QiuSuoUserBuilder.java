@@ -16,7 +16,7 @@ public class QiuSuoUserBuilder {
     private QiuSuoUserBuilder() {
     }
 
-    public static QiuSuoUserBuilder qiusuoUserBuilder() {
+    public static QiuSuoUserBuilder userBuilder() {
         QiuSuoUserBuilder userBuilder = new QiuSuoUserBuilder();
         userBuilder.parent = builder();
         return userBuilder;
@@ -35,6 +35,7 @@ public class QiuSuoUserBuilder {
         User user = (User) this.parent().build();
         //we might do not need username and passworld
         QiuSuoUser qiusuoUser = new QiuSuoUser(user.getUsername(),user.getPassword(),user.getAuthorities());
+        qiusuoUser.setUserId(userId);
         return qiusuoUser;
     }
 }

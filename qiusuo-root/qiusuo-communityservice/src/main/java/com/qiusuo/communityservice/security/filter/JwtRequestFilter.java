@@ -24,7 +24,6 @@ import java.io.IOException;
         */
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
-    private String userId;
     Logger LOGGER = LoggerFactory.getLogger(JwtRequestFilter.class);
 
     private JwtTokenUtil jwtTokenUtil;
@@ -43,6 +42,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
          */
         final String requestTokenHeader = request.getHeader("Authorization");
         System.out.println("Authorization is "+requestTokenHeader);
+        String userId = null;
         String jwtToken = null;
 
         if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {

@@ -21,7 +21,8 @@ public class QiuSuoUser extends User implements QiuSuoUserDetails {
     }
 
     public static QiuSuoUserBuilder withUserId(String userId) {
-        QiuSuoUserBuilder userBuilder = QiuSuoUserBuilder.qiusuoUserBuilder();
+        QiuSuoUserBuilder userBuilder = QiuSuoUserBuilder.userBuilder();
+        userBuilder.withUserId(userId);
         return userBuilder;
     }
 }

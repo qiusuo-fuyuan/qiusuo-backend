@@ -33,7 +33,7 @@ public class GithubTokenQuery implements GraphQLQueryResolver {
         HttpRequest request = HttpRequestHelper.constructPostRequest(tokenEndpoint, "", params, headers);
         String result = HttpRequestHelper.send(request);
         if (result.contains("error")) {
-            throw new QiuSuoException("GitHub Get AccessToken Error");
+            throw new QiuSuoException(String.format("GitHub Get AccessToken Error, error %s",result));
         }
         return result;
     }
