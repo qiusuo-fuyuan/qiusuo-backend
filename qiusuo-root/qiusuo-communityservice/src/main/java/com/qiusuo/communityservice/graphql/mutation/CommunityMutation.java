@@ -15,7 +15,7 @@ public class CommunityMutation implements GraphQLMutationResolver {
     }
     public Community createCommunity(CreateCommunityInput createCommunityInput) throws QiuSuoException {
         return this.communityService.createCommunity(
-                createCommunityInput.getUserId(),
+                createCommunityInput.getOwnerId(),
                 createCommunityInput.getTitle(),
                 createCommunityInput.getDescription(),
                 createCommunityInput.getAvatarUrl());

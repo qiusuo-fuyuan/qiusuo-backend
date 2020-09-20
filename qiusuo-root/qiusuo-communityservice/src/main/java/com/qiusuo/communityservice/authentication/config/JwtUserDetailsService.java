@@ -25,7 +25,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         QUser userToQuery = QUser.user;
-        User userResult = jpaQueryFactory.selectFrom(userToQuery).where(userToQuery.name.eq(username)).fetchOne();
+        User userResult = jpaQueryFactory.selectFrom(userToQuery).where(userToQuery.userId.eq(username)).fetchOne();
 
         org.springframework.security.core.userdetails.User.UserBuilder builder;
         if (userResult != null) {
@@ -34,7 +34,7 @@ public class JwtUserDetailsService implements UserDetailsService {
             String roleName = userResult.getRoles().stream().map(Role::getName).collect(Collectors.joining(","));
             builder.roles(roleName).username(userResult.getName()).password(userResult.getEncryptedPassword());
         } else {
-            throw new UsernameNotFoundException("User not found.");
+            throw new UsernameNotFoundException(String.format("User not found %s",username));
         }
         return builder.build();
     }

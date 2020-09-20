@@ -14,13 +14,14 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
     }
 
     @Override
-    public User getUserByName(String name) {
+    public User findUserByUserId(String userId) {
         QUser user = QUser.user;
         User existingUser = jpaQueryFactory.selectFrom(user)
-                .where(user.name.eq(name))
+                .where(user.userId.eq(userId))
                 .fetchOne();
         if(existingUser == null) {
-            throw new UsernameNotFoundException("username with name not found");
+            return null;
+            //throw new UsernameNotFoundException(String.format("user with userId=%s not found", userId));
         }
         return existingUser;
     }

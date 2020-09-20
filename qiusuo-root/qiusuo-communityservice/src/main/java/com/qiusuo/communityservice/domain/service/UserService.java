@@ -27,7 +27,7 @@ public class UserService {
     }
 
     public Collection<Community> getCommunitiesForUserId(String userId) {
-        User user = userRepository.findByUserId(userId).get();
+        User user = userRepository.findUserByUserId(userId);
         return user.getSubscribedCommunities();
     }
 
@@ -48,7 +48,7 @@ public class UserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             CustomAuthenticationToken customAuthenticationToken = (CustomAuthenticationToken) authentication;
-            return userRepository.findByUserId(customAuthenticationToken.getUserId()).get();
+            return userRepository.findUserByUserId(customAuthenticationToken.getUsername());
         }
         else {
             /*

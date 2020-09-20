@@ -12,7 +12,7 @@ import lombok.Data;
  */
 @Data
 public class CreateCommunityInput {
-    private String userId;
+    private String ownerId;
     private String title;
     private String description;
     private String avatarUrl;

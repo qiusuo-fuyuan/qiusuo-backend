@@ -1,9 +1,9 @@
 type Community {
     id: ID!
     title: String!
-    description: String!
-    avatarUrl: String!
-    tags: [String]!
+    description: String
+    avatarUrl: String
+    tags: [String]
     channels: [Channel]!
 }
 

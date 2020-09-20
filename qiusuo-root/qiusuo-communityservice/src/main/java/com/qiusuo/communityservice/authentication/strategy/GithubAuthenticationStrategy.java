@@ -34,15 +34,19 @@ public class GithubAuthenticationStrategy {
         LOGGER.debug("user authentication github with username {} and userId {}",
                 authentication.getUsername(), authentication.getUserId());
 
-        String userId = authentication.getUserId();
+        /**
+         * TODO:
+         * here, name and id is interleaved. We will change that to be consistent
+         */
+        String userId = authentication.getUsername();
         //for third party user, we put the platform as suffixes for the user id
-        Optional<User> existingUser = userRepository.findByUserId(userId + USERID_SUFFIX);
-        if (!existingUser.isPresent()) {
+        User existingUser = userRepository.findUserByUserId(userId);
+        if (existingUser == null) {
             User newUser = new User();
             newUser.setEnabled(true);
             newUser.setName(authentication.getUsername());
             newUser.setUserType(UserType.GITHUB);
-            newUser.setUserId(authentication.getUserId() + USERID_SUFFIX);
+            newUser.setUserId(authentication.getUsername());
             newUser.setAvatarUrl(authentication.getAvatarUrl());
             /*We set the password because when building user in JwtUserService
             Password is one mandatory field

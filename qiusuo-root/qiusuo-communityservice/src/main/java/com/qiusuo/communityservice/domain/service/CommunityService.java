@@ -41,13 +41,13 @@ public class CommunityService {
         There is a difference between owner and normal subscribers.
         We need to differentiate that
          */
-        Optional<User> owner = userRepository.findByUserId(userId);
+        User owner = userRepository.findUserByUserId(userId);
         Collection<User> subscribedUsers = new ArrayList<>();
-        if (!owner.isPresent()) {
+        if (owner == null) {
             LOGGER.error("creating community: user with userId {} does not exist",userId);
             throw new QiuSuoException("creating community failed");
         } else {
-            subscribedUsers.add(owner.get());
+            subscribedUsers.add(owner);
         }
         newCommunity.setSubscribedUsers(subscribedUsers);
         newCommunity.setChannels(createDefaultChannels());
