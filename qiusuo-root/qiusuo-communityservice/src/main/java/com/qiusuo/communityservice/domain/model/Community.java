@@ -26,9 +26,17 @@ public class Community {
     //comma separated tags
     private String commaSeparatedTags;
 
-    @ManyToMany(mappedBy = "subscribedCommunities")
+    @ManyToMany
+    @JoinTable(
+            name = "communities_users",
+            joinColumns = @JoinColumn(
+                    name = "community_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id")
+    )
     private Collection<User> subscribedUsers;
 
-    @OneToMany(mappedBy = "community",cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name="community_id")
     private Collection<Channel> channels;
 }

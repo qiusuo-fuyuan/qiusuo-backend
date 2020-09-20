@@ -28,6 +28,11 @@ public class UserService {
 
     public Collection<Community> getCommunitiesForUserId(String userId) {
         User user = userRepository.findUserByUserId(userId);
+        /*here, it actually returns the proxy. Only when we try to fetch
+        one of those values, then Hibernate will use the current session
+        to fetch the values.
+        */
+        user.getSubscribedCommunities().size();//TODO change later.
         return user.getSubscribedCommunities();
     }
 

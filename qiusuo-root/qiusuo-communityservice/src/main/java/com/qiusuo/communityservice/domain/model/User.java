@@ -48,13 +48,7 @@ public  class User {
     private Collection<Role> roles;
 
 
-    @ManyToMany
-    @JoinTable(
-            name = "users_communities",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "community_id", referencedColumnName = "id"))
+    @ManyToMany(mappedBy = "subscribedUsers")
     private Collection<Community> subscribedCommunities;
 
     @OneToOne
