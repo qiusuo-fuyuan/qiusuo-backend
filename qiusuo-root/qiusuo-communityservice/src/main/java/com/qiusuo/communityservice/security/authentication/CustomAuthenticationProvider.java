@@ -1,7 +1,7 @@
-package com.qiusuo.communityservice.authentication.privider;
+package com.qiusuo.communityservice.security.authentication;
 
-import com.qiusuo.communityservice.authentication.adaptor.AuthenticationAdapter;
-import com.qiusuo.communityservice.authentication.config.CustomAuthenticationToken;
+import com.qiusuo.communityservice.security.authentication.AuthenticationAdapter;
+import com.qiusuo.communityservice.security.authentication.QiuSuoAuthenticationToken;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
@@ -18,11 +18,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication)
             throws AuthenticationException {
-        return authenticationAdapter.authenticate((CustomAuthenticationToken) authentication);
+        return authenticationAdapter.authenticate((QiuSuoAuthenticationToken) authentication);
     }
 
     @Override
     public boolean supports(Class<?> authentication) {
-        return authentication.equals(CustomAuthenticationToken.class);
+        return authentication.equals(QiuSuoAuthenticationToken.class);
     }
 }

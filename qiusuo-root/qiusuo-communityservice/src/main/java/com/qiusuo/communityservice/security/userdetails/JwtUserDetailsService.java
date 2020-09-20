@@ -1,9 +1,10 @@
-package com.qiusuo.communityservice.authentication.config;
+package com.qiusuo.communityservice.security.userdetails;
 
 
 import com.qiusuo.communityservice.domain.model.QUser;
 import com.qiusuo.communityservice.domain.model.Role;
 import com.qiusuo.communityservice.domain.model.User;
+import com.qiusuo.communityservice.security.userdetails.QiuSuoUserDetails;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,27 +16,32 @@ import java.util.stream.Collectors;
 
 @Transactional
 @Service
-public class JwtUserDetailsService implements UserDetailsService {
+public class JwtUserDetailsService  implements UserDetailsService{
     private JPAQueryFactory jpaQueryFactory;
 
     public JwtUserDetailsService(JPAQueryFactory jpaQueryFactory) {
         this.jpaQueryFactory = jpaQueryFactory;
     }
 
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public QiuSuoUserDetails loadUserByUserId(String userId) throws UsernameNotFoundException {
 
         QUser userToQuery = QUser.user;
-        User userResult = jpaQueryFactory.selectFrom(userToQuery).where(userToQuery.userId.eq(username)).fetchOne();
+        User userResult = jpaQueryFactory.selectFrom(userToQuery).where(userToQuery.userId.eq(userId)).fetchOne();
 
-        org.springframework.security.core.userdetails.User.UserBuilder builder;
+        QiuSuoUserBuilder userBuilder;
         if (userResult != null) {
-            builder = org.springframework.security.core.userdetails.User.withUsername(username);
-            builder.password(userResult.getEncryptedPassword());
+            userBuilder = QiuSuoUser.withUserId(userId);
+            userBuilder.parent().password(userResult.getEncryptedPassword());
             String roleName = userResult.getRoles().stream().map(Role::getName).collect(Collectors.joining(","));
-            builder.roles(roleName).username(userResult.getName()).password(userResult.getEncryptedPassword());
+            userBuilder.parent().roles(roleName).username(userResult.getName()).password(userResult.getEncryptedPassword());
         } else {
-            throw new UsernameNotFoundException(String.format("User not found %s",username));
+            throw new UsernameNotFoundException(String.format("User with user id not found %s", userId));
         }
-        return builder.build();
+        return userBuilder.build();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
     }
 }

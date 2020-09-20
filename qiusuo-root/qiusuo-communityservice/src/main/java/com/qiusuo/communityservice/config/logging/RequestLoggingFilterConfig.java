@@ -1,4 +1,4 @@
-package com.qiusuo.communityservice.config;
+package com.qiusuo.communityservice.config.logging;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

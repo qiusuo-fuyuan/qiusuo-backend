@@ -1,4 +1,4 @@
-package com.qiusuo.communityservice.config;
+package com.qiusuo.communityservice.config.jpa;
 
 
 import com.querydsl.jpa.impl.JPAQueryFactory;

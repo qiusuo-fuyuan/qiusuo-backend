@@ -1,4 +1,4 @@
-package com.qiusuo.communityservice.authentication.config;
+package com.qiusuo.communityservice.security.authentication;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

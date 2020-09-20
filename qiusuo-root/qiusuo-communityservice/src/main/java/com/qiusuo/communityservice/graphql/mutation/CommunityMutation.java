@@ -18,7 +18,7 @@ public class CommunityMutation implements GraphQLMutationResolver {
                 createCommunityInput.getOwnerId(),
                 createCommunityInput.getTitle(),
                 createCommunityInput.getDescription(),
-                createCommunityInput.getAvatarUrl());
+                createCommunityInput.getAvatarUrl(), createCommunityInput.getTags());
     }
 
 }

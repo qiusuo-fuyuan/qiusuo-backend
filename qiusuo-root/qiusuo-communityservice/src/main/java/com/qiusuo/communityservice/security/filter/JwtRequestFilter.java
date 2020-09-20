@@ -1,14 +1,13 @@
-package com.qiusuo.communityservice.authentication.filter;
+package com.qiusuo.communityservice.security.filter;
 
-
-import com.qiusuo.communityservice.authentication.config.CustomAuthenticationToken;
-import com.qiusuo.communityservice.authentication.config.JwtUserDetailsService;
+import com.qiusuo.communityservice.security.authentication.QiuSuoAuthenticationToken;
+import com.qiusuo.communityservice.security.userdetails.JwtUserDetailsService;
+import com.qiusuo.communityservice.security.userdetails.QiuSuoUserDetails;
 import com.qiusuo.communityservice.util.jwt.JwtTokenUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -18,15 +17,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 /**
- * TODO:
- * (1)handle when token has expired
- * (2)handle when frontend send one invalid token
- */
+        * TODO:
+        * (1)handle when token has expired
+        * (2)handle when frontend send one invalid token
+        */
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
-    private String username;
     Logger LOGGER = LoggerFactory.getLogger(JwtRequestFilter.class);
 
     private JwtTokenUtil jwtTokenUtil;
@@ -45,14 +42,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
          */
         final String requestTokenHeader = request.getHeader("Authorization");
         System.out.println("Authorization is "+requestTokenHeader);
-        String username = null;
+        String userId = null;
         String jwtToken = null;
 
         if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
             jwtToken = requestTokenHeader.substring(7);
             try {
                 //What i need to do here is to put the UserDetails information in the SecurityContextHolder.
-                username = jwtTokenUtil.getUsernameFromToken(jwtToken);
+                userId = jwtTokenUtil.getUserIdFromToken(jwtToken);
             } catch (IllegalArgumentException e) {
                 LOGGER.error("Unable to get JWT Token");
             } catch (ExpiredJwtException e) {
@@ -61,15 +58,15 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         } else {
             LOGGER.warn("JWT Token does not begin with Bearer String");
         }
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = this.jwtUserDetailsService.loadUserByUsername(username);
+        if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            QiuSuoUserDetails userDetails = this.jwtUserDetailsService.loadUserByUserId(userId);
             if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
-                CustomAuthenticationToken customAuthenticationToken = new CustomAuthenticationToken(
+                QiuSuoAuthenticationToken qiuSuoAuthenticationToken = new QiuSuoAuthenticationToken(
                         userDetails, userDetails.getAuthorities());
-                customAuthenticationToken
+                qiuSuoAuthenticationToken
                         .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                customAuthenticationToken.setAuthenticated(true);
-                SecurityContextHolder.getContext().setAuthentication(customAuthenticationToken);
+                qiuSuoAuthenticationToken.setAuthenticated(true);
+                SecurityContextHolder.getContext().setAuthentication(qiuSuoAuthenticationToken);
             }
         }
         chain.doFilter(request, response);

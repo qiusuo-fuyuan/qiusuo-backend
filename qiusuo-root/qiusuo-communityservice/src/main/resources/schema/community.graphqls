@@ -3,7 +3,7 @@ type Community {
     title: String!
     description: String
     avatarUrl: String
-    tags: [String]
+    tags: [String]!
     channels: [Channel]!
 }
 
