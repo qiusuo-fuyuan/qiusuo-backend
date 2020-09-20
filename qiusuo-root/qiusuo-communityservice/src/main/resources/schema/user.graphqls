@@ -11,6 +11,7 @@ type UserRegisterInput {
 
 type UserQuery extend type Query {
     userDetails: User!
+    myCommunities(userId: ID!): [Community]!
 }
 
 type UserMutation extend type Mutation{

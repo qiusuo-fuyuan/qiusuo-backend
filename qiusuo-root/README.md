@@ -12,9 +12,19 @@ Step 3 cd config/dev, run docker-compose up
 
 Step 1: install lombok annotation processor plugin in intellij\
 Step 2: enable the annotation processor in Intellij plugin\
-Step 3: right click qiusuo-community project, select 
-maven generate-sources and update target folders
 
-Step 4: Now the app should be able to start
+
+# Start the community-service from command line
+cd qiusuo-communityservice 
+
+gradle bootrun
+
+
+
+# Migrating to Spring WebFlux
+(1) Use netty has web server\
+(2) For graphql, there is already examples online\
+(3) For mysql, we could use a custom thread pool for the db operations.Then 
+we will not block the Netty event loop thread. 
 
 
