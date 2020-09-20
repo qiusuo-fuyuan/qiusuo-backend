@@ -8,12 +8,15 @@ import com.qiusuo.communityservice.domain.model.User;
 import com.qiusuo.communityservice.domain.repository.CommunityRepository;
 import com.qiusuo.communityservice.domain.repository.UserRepository;
 import com.qiusuo.communityservice.exception.QiuSuoException;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,12 +33,16 @@ public class CommunityService {
     public Community createCommunity(String userId,
                                      String title,
                                      String description,
-                                     String avatarUrl) throws QiuSuoException {
+                                     String avatarUrl,
+    List<String> tags) throws QiuSuoException {
 
         Community newCommunity = new Community();
         newCommunity.setTitle(title);
         newCommunity.setDescription(description);
         newCommunity.setAvatarUrl(avatarUrl);
+        if(!CollectionUtils.isEmpty(tags)) {
+            newCommunity.setCommaSeparatedTags(String.join(", ", tags));
+        }
         /*
         TODO
         There is a difference between owner and normal subscribers.

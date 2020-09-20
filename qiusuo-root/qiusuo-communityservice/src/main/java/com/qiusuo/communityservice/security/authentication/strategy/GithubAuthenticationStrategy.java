@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.ArrayList;
 
@@ -39,8 +40,11 @@ public class GithubAuthenticationStrategy {
          */
         String userId = authentication.getUserId();
         //for third party user, we put the platform as suffixes for the user id
-        User existingUser = userRepository.findUserByUserId(userId);
-        if (existingUser == null) {
+
+        User existingUser;
+        try {
+            existingUser = userRepository.findUserByUserId(userId);
+        } catch (UsernameNotFoundException e) {
             User newUser = new User();
             newUser.setEnabled(true);
             newUser.setName(authentication.getUsername());
@@ -55,7 +59,6 @@ public class GithubAuthenticationStrategy {
             userRepository.save(newUser);
             LOGGER.debug("user authentication: generating github user with name {} and userId {}",
                     authentication.getUsername(), authentication.getUserId());
-
         }
         return authentication;
     }

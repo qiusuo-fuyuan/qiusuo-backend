@@ -3,6 +3,8 @@ package com.qiusuo.communityservice.graphql.mutation;
 
 import lombok.Data;
 
+import java.util.List;
+
 
 /**
  * Data annotation is a shortcut for
@@ -16,4 +18,5 @@ public class CreateCommunityInput {
     private String title;
     private String description;
     private String avatarUrl;
+    private List<String> tags;
 }
