@@ -1,15 +1,15 @@
-package com.qiusuo.communityservice.authentication.config;
+package com.qiusuo.communityservice.security.authentication;
 
 import com.qiusuo.communityservice.domain.model.UserType;
+import com.qiusuo.communityservice.security.userdetails.QiuSuoUserDetails;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class CustomAuthenticationToken extends AbstractAuthenticationToken {
+public class QiuSuoAuthenticationToken extends AbstractAuthenticationToken {
     @Getter
     @Setter
     private UserType authenticationType;
@@ -27,17 +27,18 @@ public class CustomAuthenticationToken extends AbstractAuthenticationToken {
     private String avatarUrl;
 
 
-    public CustomAuthenticationToken(UserDetails userDetails, Collection<? extends GrantedAuthority> authorities) {
+    public QiuSuoAuthenticationToken(QiuSuoUserDetails userDetails, Collection<? extends GrantedAuthority> authorities) {
         super(authorities);
         setUsername(userDetails.getUsername());
         setPassword(userDetails.getPassword());
+        setUserId(userDetails.getUserId());
     }
 
-    public CustomAuthenticationToken(Collection<? extends GrantedAuthority> authorities) {
+    public QiuSuoAuthenticationToken(Collection<? extends GrantedAuthority> authorities) {
         super(authorities);
     }
 
-    public CustomAuthenticationToken(String username, String userId, String password,
+    public QiuSuoAuthenticationToken(String username, String userId, String password,
                                      UserType authenticationType, String avatarUrl) {
         super(null);
         this.username = username;

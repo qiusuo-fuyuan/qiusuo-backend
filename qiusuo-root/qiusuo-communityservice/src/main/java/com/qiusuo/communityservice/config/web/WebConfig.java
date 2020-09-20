@@ -1,4 +1,4 @@
-package com.qiusuo.communityservice.config;
+package com.qiusuo.communityservice.config.web;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

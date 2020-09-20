@@ -1,7 +1,7 @@
-package com.qiusuo.communityservice.authentication.strategy;
+package com.qiusuo.communityservice.security.authentication.strategy;
 
 
-import com.qiusuo.communityservice.authentication.config.CustomAuthenticationToken;
+import com.qiusuo.communityservice.security.authentication.QiuSuoAuthenticationToken;
 import com.qiusuo.communityservice.domain.repository.UserRepository;
 import com.qiusuo.communityservice.domain.model.*;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 /*
 What we will do is to use HttpClient to send one query request to github using the accessToken. If it returns
@@ -30,7 +29,7 @@ public class GithubAuthenticationStrategy {
     }
     /*
      */
-    public Authentication authenticate(CustomAuthenticationToken authentication) {
+    public Authentication authenticate(QiuSuoAuthenticationToken authentication) {
         LOGGER.debug("user authentication github with username {} and userId {}",
                 authentication.getUsername(), authentication.getUserId());
 

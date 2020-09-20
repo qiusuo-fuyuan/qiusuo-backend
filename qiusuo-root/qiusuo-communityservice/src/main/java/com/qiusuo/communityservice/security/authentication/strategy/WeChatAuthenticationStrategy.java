@@ -1,6 +1,6 @@
-package com.qiusuo.communityservice.authentication.strategy;
+package com.qiusuo.communityservice.security.authentication.strategy;
 
-import com.qiusuo.communityservice.authentication.config.CustomAuthenticationToken;
+import com.qiusuo.communityservice.security.authentication.QiuSuoAuthenticationToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,7 @@ public class WeChatAuthenticationStrategy {
 
     /*
      */
-    public Authentication authenticate(CustomAuthenticationToken authentication) {
+    public Authentication authenticate(QiuSuoAuthenticationToken authentication) {
         LOGGER.debug("authenticate via wechat account");
         String accessToken = authentication.getUsername();
         //call github

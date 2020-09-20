@@ -1,6 +1,6 @@
 package com.qiusuo.communityservice.domain.service;
 
-import com.qiusuo.communityservice.authentication.config.CustomAuthenticationToken;
+import com.qiusuo.communityservice.security.authentication.QiuSuoAuthenticationToken;
 import com.qiusuo.communityservice.domain.model.Community;
 import com.qiusuo.communityservice.domain.model.User;
 import com.qiusuo.communityservice.domain.repository.UserRepository;
@@ -52,8 +52,8 @@ public class UserService {
     public User getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            CustomAuthenticationToken customAuthenticationToken = (CustomAuthenticationToken) authentication;
-            return userRepository.findUserByUserId(customAuthenticationToken.getUsername());
+            QiuSuoAuthenticationToken qiuSuoAuthenticationToken = (QiuSuoAuthenticationToken) authentication;
+            return userRepository.findUserByUserId(qiuSuoAuthenticationToken.getUsername());
         }
         else {
             /*

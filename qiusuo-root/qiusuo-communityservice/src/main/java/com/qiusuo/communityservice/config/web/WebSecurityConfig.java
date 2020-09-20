@@ -1,9 +1,9 @@
-package com.qiusuo.communityservice.config;
+package com.qiusuo.communityservice.config.web;
 
 
-import com.qiusuo.communityservice.authentication.config.JwtAuthenticationEntryPoint;
-import com.qiusuo.communityservice.authentication.filter.JwtRequestFilter;
-import com.qiusuo.communityservice.authentication.privider.CustomAuthenticationProvider;
+import com.qiusuo.communityservice.security.authentication.JwtAuthenticationEntryPoint;
+import com.qiusuo.communityservice.security.authentication.CustomAuthenticationProvider;
+import com.qiusuo.communityservice.security.filter.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
