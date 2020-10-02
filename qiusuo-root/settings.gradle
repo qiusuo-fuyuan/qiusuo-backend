@@ -3,14 +3,17 @@
  */
 
 rootProject.name = 'qiusuo-root-pom'
+
+include 'qiusuo-qaservice'
+include 'qiusuo-communityservice'
+include 'qiusuo-streamingservice'
+include(':core:authenticationservice')
+include 'qiusuo-configurationservice'
+include(':core')
+include 'qiusuo-coderunner'
 include(':eurekasvr')
 include(':confsvr')
-include(':core:authenticationservice')
-include(':core')
-include(':qiusuo-qaservice')
-include(':qiusuo-communityservice')
-include(':qiusuo-streamingsvr')
-include(':qiusuo-coderunner')
-include(':qiusuo-messagingsvr')
-include(':qiusuo-searchservice')
+include 'qiusuo-messagingsvr'
+include 'qiusuo-searchservice'
 project(':core:authenticationservice').projectDir = file('core/authenticationservice')
+include 'qiusuo-gatewayservice'

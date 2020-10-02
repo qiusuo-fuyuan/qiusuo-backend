@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: qiusuo-communityservice
+  datasource:
+    data: classpath:data.sql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+    password: qiusuo
+    url: jdbc:mysql://127.0.0.1:4406/qiusuo
+    username: qiusuo
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+
+
+graphiql:
+  cdn:
+    enabled: true
+  enabled: true
+graphql:
+  servlet:
+    exception-handlers-enabled: true
+    tracing-enabled: true
+logging:
+  level:
+    com:
+      qiusuo: DEBUG
+      querydsl:
+        jpa: DEBUG
+    org:
+      apache:
+        catalina: TRACE
+      springframework:
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
+server:
+  tomcat:
+    accesslog:
+      buffered: false
+      directory: logs
+      enabled: true
+      pattern: 'common # Format pattern for access logs.'
+      prefix: stdout
+    basedir: .

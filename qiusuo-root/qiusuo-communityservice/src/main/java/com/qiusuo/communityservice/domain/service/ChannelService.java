@@ -25,8 +25,8 @@ public class ChannelService {
     public Channel createChannel(String name, Long communityId) throws QiuSuoException {
         Optional<Community> community = communityRepository.findById(communityId);
         if(!community.isPresent()) {
-            LOGGER.error("create channel: parent communityId {} does not exist",communityId);
-            throw new QiuSuoException("create channel failed, commmunity id does not exist");
+            LOGGER.error("CreateChannel: parent communityId {} does not exist",communityId);
+            throw new QiuSuoException("CreateChannel: failed, commmunity id {} does not exist", communityId);
         }
 
         Channel channel = new Channel();

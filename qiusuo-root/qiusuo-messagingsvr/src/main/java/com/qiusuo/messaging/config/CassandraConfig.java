@@ -22,9 +22,15 @@ public class CassandraConfig  extends AbstractCassandraConfiguration {
         return SchemaAction.CREATE_IF_NOT_EXISTS;
     }
 
+    /**
+     * On Production System, we need at least two nodes for the running of cassandra
+     * server.
+     * server.
+     * @return
+     */
     @Override
-    public String[] getEntityBasePackages() {
-        return new String[]{"com.qiusuo.springbootcassandra.springbootcassandra.persistence"};
+    public String getLocalDataCenter() {
+        return "datacenter1";
     }
 
     @Override

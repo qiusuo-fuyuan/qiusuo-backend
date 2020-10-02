@@ -51,8 +51,8 @@ public class CommunityService {
         User owner = userRepository.findUserByUserId(userId);
         Collection<User> subscribedUsers = new ArrayList<>();
         if (owner == null) {
-            LOGGER.error("creating community: user with userId {} does not exist",userId);
-            throw new QiuSuoException("creating community failed");
+            LOGGER.error("CreateCommunity: user with userId {} does not exist",userId);
+            throw new QiuSuoException("creating community failed by userId {}", userId);
         } else {
             subscribedUsers.add(owner);
         }

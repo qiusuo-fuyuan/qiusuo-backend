@@ -3,6 +3,10 @@ type Channel {
     name: String!
 }
 
+type ChannelType {
+
+}
+
 input CreateChannelInput {
     communityId: ID!
     name: String!
