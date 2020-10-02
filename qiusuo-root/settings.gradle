@@ -3,6 +3,7 @@
  */
 
 rootProject.name = 'qiusuo-root-pom'
+
 include 'qiusuo-qaservice'
 include 'qiusuo-communityservice'
 include 'qiusuo-streamingservice'
@@ -16,4 +17,3 @@ include 'qiusuo-messagingsvr'
 include 'qiusuo-searchservice'
 project(':core:authenticationservice').projectDir = file('core/authenticationservice')
 include 'qiusuo-gatewayservice'
-
