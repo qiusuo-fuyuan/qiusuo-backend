@@ -65,6 +65,12 @@ public class CommunityService {
         return newCommunity;
     }
 
+    public Community getActiveCommunityForUserId(String userId) {
+        User user = userRepository.findUserByUserId(userId);
+
+        //TODO: currently we always return the first one as the active community
+        return user.getSubscribedCommunities().iterator().next();
+    }
 
     private Collection<Channel> createDefaultChannels() {
         Collection<Channel> channels = new ArrayList<>() {

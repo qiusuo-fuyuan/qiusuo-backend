@@ -1,4 +1,4 @@
-package com.qiusuo.communityservice.graphql.mutation;
+package com.qiusuo.communityservice.graphql.types;
 
 
 import lombok.Data;

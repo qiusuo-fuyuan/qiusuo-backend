@@ -53,4 +53,7 @@ public  class User {
 
     @OneToOne
     private Profile userProfile;
+
+    @OneToOne
+    private Community activeCommunity;
 }

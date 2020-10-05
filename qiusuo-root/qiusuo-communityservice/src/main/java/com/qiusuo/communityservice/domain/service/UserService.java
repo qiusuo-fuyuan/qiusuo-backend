@@ -30,7 +30,7 @@ public class UserService {
     public Collection<Community> getCommunitiesForUserId(String userId) {
         User user = userRepository.findUserByUserId(userId);
         /*here, it actually returns the proxy. Only when we try to fetch
-        one of those values, Hibernate.initialize will intiialize lazy objects
+        one of those values, Hibernate.initialize will initialize lazy objects
         */
         user.getSubscribedCommunities().forEach( community -> {
             Hibernate.initialize(community.getChannels());
@@ -49,11 +49,14 @@ public class UserService {
      * Get the current username from spring security context holder
      * There is always one current user. Either anonymous user or
      * logged in user
+     *
+     * TODO This method will not work, when we use Reactive Programming, we have
+     * to somehow change that.
      * @return
      */
     public User getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+        if (authentication instanceof QiuSuoAuthenticationToken) {
             QiuSuoAuthenticationToken qiuSuoAuthenticationToken = (QiuSuoAuthenticationToken) authentication;
             return userRepository.findUserByUserId(qiuSuoAuthenticationToken.getUserId());
         }
