@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: qiusuo-communityservice
+  profiles:
+    active:
+      default
+  cloud:
+    config:
+      uri: http://localhost:8888

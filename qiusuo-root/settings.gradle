@@ -8,11 +8,10 @@ include 'qiusuo-qaservice'
 include 'qiusuo-communityservice'
 include 'qiusuo-streamingservice'
 include(':core:authenticationservice')
-include 'qiusuo-configurationservice'
+include 'qiusuo-configsvr'
 include(':core')
 include 'qiusuo-coderunner'
-include(':eurekasvr')
-include(':confsvr')
+include 'qiusuo-eurekasvr'
 include 'qiusuo-messagingsvr'
 include 'qiusuo-searchservice'
 project(':core:authenticationservice').projectDir = file('core/authenticationservice')
