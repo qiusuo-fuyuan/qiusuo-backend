@@ -22,7 +22,7 @@ public class WebSocketConfigSpringSession extends AbstractSessionWebSocketMessag
     private Integer relayPort;
 
     protected void configureStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/messaging/ws").setAllowedOrigins("http://localhost:3000").withSockJS();
+        registry.addEndpoint("/messaging/ws").setAllowedOrigins("http://localhost:3000");
     }
 
     public void configureMessageBroker(MessageBrokerRegistry registry) {
