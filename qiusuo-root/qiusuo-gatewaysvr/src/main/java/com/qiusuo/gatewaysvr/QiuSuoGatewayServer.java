@@ -15,10 +15,9 @@ public class QiuSuoGatewayServiceApplication {
 
     @Bean
     public RouteLocator myRoutes(RouteLocatorBuilder builder) {
-        return builder.routes().build();
+        return builder.routes()
+                .route("r1", r -> r.host("localhost")
+                        .uri("https://google.com")).build();
+
     }
-
-
-
-
 }
