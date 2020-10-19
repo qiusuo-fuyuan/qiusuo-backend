@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class QiuSuoCommunityApplication {
+public class QiuSuoCommunityService {
     public static void main(String[] args)  {
-        SpringApplication.run(QiuSuoCommunityApplication.class, args);
+        SpringApplication.run(QiuSuoCommunityService.class, args);
     }
 }

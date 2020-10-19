@@ -1,4 +1,7 @@
 package com.qiusuo.communityservice.graphql.types;
 
-public class ChannelTypes {
+public enum ChannelType {
+    QA,
+    CHAT,
+    LIVE_STREAMING
 }
