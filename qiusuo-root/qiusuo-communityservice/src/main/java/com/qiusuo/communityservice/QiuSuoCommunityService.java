@@ -1,11 +1,13 @@
-package com.qiusuo.messaging;
+package com.qiusuo.communityservice;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
-public class QiuSuoMessagingService {
+public class QiuSuoCommunityService {
     public static void main(String[] args)  {
-        SpringApplication.run(QiuSuoMessagingService.class, args);
+        SpringApplication.run(QiuSuoCommunityService.class, args);
     }
 }
