@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMutation implements GraphQLMutationResolver {
 
-    public User registerUser(UserRegistrationInput userRegistrationInput) {
+    public User registerUser(com.qiusuo.communityservice.graphql.mutation.UserRegistrationInput userRegistrationInput) {
         return null;
     }
 }

@@ -38,7 +38,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
         /*
-        what i need to do is first check
+        what need to do is first check
          */
         final String requestTokenHeader = request.getHeader("Authorization");
         System.out.println("Authorization is "+requestTokenHeader);
@@ -48,7 +48,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
             jwtToken = requestTokenHeader.substring(7);
             try {
-                //What i need to do here is to put the UserDetails information in the SecurityContextHolder.
+                //What need to do here is to put the UserDetails information in the SecurityContextHolder.
                 userId = jwtTokenUtil.getUserIdFromToken(jwtToken);
             } catch (IllegalArgumentException e) {
                 LOGGER.error("Unable to get JWT Token");

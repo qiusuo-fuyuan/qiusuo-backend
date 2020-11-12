@@ -1,6 +1,7 @@
 package com.qiusuo.communityservice.security.authentication.strategy;
 
 
+import com.qiusuo.communityservice.security.authentication.AuthenticationStrategy;
 import com.qiusuo.communityservice.security.authentication.QiuSuoAuthenticationToken;
 import com.qiusuo.communityservice.domain.repository.UserRepository;
 import com.qiusuo.communityservice.domain.model.*;
@@ -18,7 +19,7 @@ What we will do is to use HttpClient to send one query request to github using t
 successful, then authentication sucess
  */
 @Configuration
-public class GithubAuthenticationStrategy {
+public class GithubAuthenticationStrategy implements AuthenticationStrategy {
     private static final Logger LOGGER = LoggerFactory.getLogger(GithubAuthenticationStrategy.class);
     private static final String USERID_SUFFIX = "_github";
     UserRepository userRepository;
@@ -30,6 +31,7 @@ public class GithubAuthenticationStrategy {
     }
     /*
      */
+    @Override
     public Authentication authenticate(QiuSuoAuthenticationToken authentication) {
         LOGGER.debug("user authentication github with username {} and userId {}",
                 authentication.getUsername(), authentication.getUserId());

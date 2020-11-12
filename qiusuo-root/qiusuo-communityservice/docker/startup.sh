@@ -4,10 +4,10 @@
 ####Use Bash to read the environment variable.
 ####Set the TECH_BLOG HOME environment variable
 source
-echo "Starting Qiusuo-CommunityService"
-if [ -z "$QiuSuo_CommunityService_HOME" ]
+echo "Starting qiusuo-communityService"
+if [ -z "$qiusuo_communityservice_home" ]
 then
-  echo "QiuSuo_Community_HOME not set"
+  echo "$qiusuo_communityservice_home not set"
   exit
 fi
 

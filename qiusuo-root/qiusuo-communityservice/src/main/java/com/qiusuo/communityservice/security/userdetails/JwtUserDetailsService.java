@@ -14,6 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.stream.Collectors;
 
+/**
+ * Note: using transactional on the class level will make Spring to manage the transaction session.
+ * The session will be closed after the method call.
+ */
 @Transactional
 @Service
 public class JwtUserDetailsService  implements UserDetailsService{
