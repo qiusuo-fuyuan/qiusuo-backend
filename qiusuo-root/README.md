@@ -24,7 +24,7 @@ project first. Then go to qiusuo-communityservice,
 the qiusuo-communityservice will read the config from configsvr during startup
 
 
-We are also working on the gatewaysvr so that frontend request will all go through the
+We are also working on the qiusuo-gatewaysvr so that frontend request will all go through the
 gatewaysvr.
 
 
