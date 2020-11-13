@@ -1,9 +1,16 @@
 package com.qiusuo.communityservice.graphql.types;
 
 import com.qiusuo.communityservice.graphql.types.ChannelType;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CreateChannelInput {
     private Long communityId;
     private String name;

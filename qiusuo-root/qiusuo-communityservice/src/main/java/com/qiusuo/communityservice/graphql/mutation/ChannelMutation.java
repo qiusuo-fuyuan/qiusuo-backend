@@ -17,6 +17,7 @@ public class ChannelMutation implements GraphQLMutationResolver {
     }
 
     public Channel createChannel(CreateChannelInput createChannelInput) throws QiuSuoException {
-        return channelService.createChannel(createChannelInput.getName(),createChannelInput.getCommunityId());
+        return channelService.createChannel(createChannelInput.getName(),createChannelInput.getCommunityId(),
+                createChannelInput.getChannelType());
     }
 }

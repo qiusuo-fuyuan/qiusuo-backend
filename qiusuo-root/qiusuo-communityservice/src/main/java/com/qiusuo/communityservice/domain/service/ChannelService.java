@@ -5,6 +5,7 @@ import com.qiusuo.communityservice.domain.model.Community;
 import com.qiusuo.communityservice.domain.repository.ChannelRepository;
 import com.qiusuo.communityservice.domain.repository.CommunityRepository;
 import com.qiusuo.communityservice.exception.QiuSuoException;
+import com.qiusuo.communityservice.graphql.types.ChannelType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class ChannelService {
         this.communityRepository = communityRepository;
     }
 
-    public Channel createChannel(String name, Long communityId) throws QiuSuoException {
+    public Channel createChannel(String name, Long communityId, ChannelType channelType) throws QiuSuoException {
         Optional<Community> community = communityRepository.findById(communityId);
         if(!community.isPresent()) {
             LOGGER.error("CreateChannel: parent communityId {} does not exist",communityId);
@@ -32,6 +33,7 @@ public class ChannelService {
         Channel channel = new Channel();
         channel.setName(name);
         channel.setCommunity(community.get());
+        channel.setType(channelType);
 
         //run time error might be thrown from here
         channelRepository.save(channel);

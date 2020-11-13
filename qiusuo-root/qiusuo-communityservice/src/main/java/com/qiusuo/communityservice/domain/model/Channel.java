@@ -1,5 +1,6 @@
 package com.qiusuo.communityservice.domain.model;
 
+import com.qiusuo.communityservice.graphql.types.ChannelType;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -15,14 +16,12 @@ public class Channel {
 
     private Long id;
     private String name;
+    private ChannelType type;
 
     @ManyToOne
     private Community community;
 
-
     public Channel(String name) {
         this.name = name;
     }
-
-
 }
