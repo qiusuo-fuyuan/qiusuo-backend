@@ -27,8 +27,9 @@ spring:
           uri: http://127.0.0.1:8080
           predicates:
             - Path=/messaging/**
-    config:
-      uri: http://localhost:8888
 
 server:
   port: 8040
+
+special:
+  graphqlPath: /community/graphql
