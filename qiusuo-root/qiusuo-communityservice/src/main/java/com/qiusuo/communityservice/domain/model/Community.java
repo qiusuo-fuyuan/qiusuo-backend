@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @Data is equal to @Setter @Getter @hashCode @equal.
@@ -36,7 +35,10 @@ public class Community {
     )
     private Collection<User> subscribedUsers;
 
+    /*TODO: Channel should belong to communities. Currently it's
+    separate table.
+     */
     @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name="community_id")
+    @JoinColumn(name = "community_id")
     private Collection<Channel> channels;
 }

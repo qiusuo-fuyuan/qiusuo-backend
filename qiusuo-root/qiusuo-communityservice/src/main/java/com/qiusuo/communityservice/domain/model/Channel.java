@@ -19,6 +19,8 @@ public class Channel {
     @ManyToOne
     private Community community;
 
+    @Enumerated(EnumType.STRING)
+    private ChannelType channelType;
 
     public Channel(String name) {
         this.name = name;

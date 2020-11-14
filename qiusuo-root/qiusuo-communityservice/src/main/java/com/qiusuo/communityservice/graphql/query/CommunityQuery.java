@@ -4,8 +4,10 @@ import com.qiusuo.communityservice.domain.model.Community;
 import com.qiusuo.communityservice.domain.service.CommunityService;
 import com.qiusuo.communityservice.domain.service.UserService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 
+@Secured("ROLE_USER")
 @Component
 public class CommunityQuery implements GraphQLQueryResolver {
     private UserService userService;
@@ -18,6 +20,6 @@ public class CommunityQuery implements GraphQLQueryResolver {
 
     public Community activeCommunity(String userId) {
         //We will always set active community for the user when he subscribes some community
-        return communityService.getActiveCommunityForUserId(userId);
+        return communityService.getActiveCommunityForUser(userId);
     }
 }

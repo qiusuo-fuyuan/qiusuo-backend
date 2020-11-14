@@ -1,15 +1,17 @@
 package com.qiusuo.communityservice.graphql.query;
 
-import com.qiusuo.communityservice.util.http.HttpRequestHelper;
 import com.qiusuo.communityservice.exception.QiuSuoException;
+import com.qiusuo.communityservice.util.http.HttpRequestHelper;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 
 import java.net.http.HttpRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+@Secured("ROLE_ANONYMOUS")
 @Component
 public class GithubTokenQuery implements GraphQLQueryResolver {
     @Value("${oauth_client_id}")
@@ -33,7 +35,7 @@ public class GithubTokenQuery implements GraphQLQueryResolver {
         HttpRequest request = HttpRequestHelper.constructPostRequest(tokenEndpoint, "", params, headers);
         String result = HttpRequestHelper.send(request);
         if (result.contains("error")) {
-            throw new QiuSuoException(String.format("GitHub Get AccessToken Error, error %s",result));
+            throw new QiuSuoException(String.format("GitHub Get AccessToken Error, error %s", result));
         }
         return result;
     }

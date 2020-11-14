@@ -1,4 +1,4 @@
-package com.qiusuo.communityservice.graphql.types;
+package com.qiusuo.communityservice.domain.model;
 
 public enum ChannelType {
     QA,

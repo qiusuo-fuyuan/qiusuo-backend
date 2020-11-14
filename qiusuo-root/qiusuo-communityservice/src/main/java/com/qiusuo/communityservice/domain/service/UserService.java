@@ -1,9 +1,9 @@
 package com.qiusuo.communityservice.domain.service;
 
-import com.qiusuo.communityservice.security.authentication.QiuSuoAuthenticationToken;
 import com.qiusuo.communityservice.domain.model.Community;
 import com.qiusuo.communityservice.domain.model.User;
 import com.qiusuo.communityservice.domain.repository.UserRepository;
+import com.qiusuo.communityservice.security.authentication.QiuSuoAuthenticationToken;
 import org.hibernate.Hibernate;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -32,7 +32,7 @@ public class UserService {
         /*here, it actually returns the proxy. Only when we try to fetch
         one of those values, Hibernate.initialize will initialize lazy objects
         */
-        user.getSubscribedCommunities().forEach( community -> {
+        user.getSubscribedCommunities().forEach(community -> {
             Hibernate.initialize(community.getChannels());
         });
         return user.getSubscribedCommunities();
@@ -45,13 +45,18 @@ public class UserService {
         return newUser;
     }
 
+    public User findUserById(String id) {
+        return userRepository.getOne(Long.parseLong(id));
+    }
+
     /**
      * Get the current username from spring security context holder
      * There is always one current user. Either anonymous user or
      * logged in user
-     *
+     * <p>
      * TODO This method will not work, when we use Reactive Programming, we have
-     * to somehow change that.
+     * since the authentication object is set in the ThreadLocal object. Will find out later
+     *
      * @return
      */
     public User getCurrentUser() {
@@ -59,8 +64,7 @@ public class UserService {
         if (authentication instanceof QiuSuoAuthenticationToken) {
             QiuSuoAuthenticationToken qiuSuoAuthenticationToken = (QiuSuoAuthenticationToken) authentication;
             return userRepository.findUserByUserId(qiuSuoAuthenticationToken.getUserId());
-        }
-        else {
+        } else {
             /*
             TODO: user information for anonymous user
              */
