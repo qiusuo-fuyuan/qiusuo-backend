@@ -23,7 +23,7 @@ public class UserQuery implements GraphQLQueryResolver {
         return userService.getCurrentUser();
     }
 
-    public Collection<Community> myCommunities(String userId) {
-        return userService.getCommunitiesForUserId(userId);
+    public Collection<Community> myCommunities() {
+        return userService.getCommunitiesForCurrentUser();
     }
 }

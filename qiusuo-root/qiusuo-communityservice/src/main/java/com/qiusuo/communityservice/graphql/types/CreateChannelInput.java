@@ -1,6 +1,6 @@
 package com.qiusuo.communityservice.graphql.types;
 
-import com.qiusuo.communityservice.graphql.types.ChannelType;
+import com.qiusuo.communityservice.domain.model.ChannelType;
 import lombok.Data;
 
 @Data

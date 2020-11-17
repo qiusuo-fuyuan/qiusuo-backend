@@ -1,6 +1,9 @@
 type Channel {
     id: ID!
     name: String!
+    active: Boolean!
+    channelType: ChannelType
+    parentCommunity: Community
 }
 
 enum ChannelType {
@@ -15,6 +18,7 @@ input CreateChannelInput {
     channelType: ChannelType!
 }
 
+
 type ChannelMutation extend type Mutation {
-    createChannel(createChannelInput: CreateChannelInput!): Channel!
+    test: String!
 }

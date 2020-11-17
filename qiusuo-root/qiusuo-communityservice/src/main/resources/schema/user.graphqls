@@ -12,9 +12,11 @@ type UserRegisterInput {
 
 type UserQuery extend type Query {
     userDetails: User!
-    myCommunities(userId: ID!): [Community]!
+    myCommunities: [Community]!
 }
 
 type UserMutation extend type Mutation{
     registerUser(name: String): User!
+    setActiveCommunity(communityId: ID!, userId: ID!): User!
+    setActiveChannel(channelId: ID!, userId: ID!): User!
 }

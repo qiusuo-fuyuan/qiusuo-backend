@@ -4,21 +4,18 @@ type Community {
     description: String
     avatarUrl: String
     tags: [String]!
+    active: Boolean!
     channels: [Channel]!
 }
 
 input CreateCommunityInput {
-    ownerId: String!
+    userId: String!
     title: String!
     description: String!
     tags: [String]!
     avatarUrl: String
 }
 
-input ActiveCommunityInput {
-    communityId: ID!
-    channelId: ID!
-}
 
 
 type CommunityQuery extend type Query {
@@ -27,4 +24,5 @@ type CommunityQuery extend type Query {
 
 type CommunityMutation extend type Mutation {
     createCommunity(createCommunityInput: CreateCommunityInput!): Community!
+    addChannel(createChannelInput: CreateChannelInput!): Community!
 }

@@ -8,13 +8,12 @@ import java.util.List;
 
 /**
  * Data annotation is a shortcut for
- * implicit @Getter, @Setter, @ToString, @EqualsAndHashCode
+ * implicit @Getter, @Setter, @ToString, @Equals And HashCode
  * and @RequiredArgsConstructor
- *
  */
 @Data
 public class CreateCommunityInput {
-    private String ownerId;
+    private String userId;
     private String title;
     private String description;
     private String avatarUrl;
