@@ -17,15 +17,12 @@ Step 2: enable annotation processing in Intellij \
 # Start the community-service from command line
 git clone https://github.com/qiusuo-fuyuan/qiusuo-backend.git& 
 git checkout develop\
+cd qiusuo-gatewaysvr&gradle bootRun\
+cd qiusuo-configsvr&run gradle bootRun
 
-Currently we are migrating all the configurations to qiusuo-configsvr.
-You can start configsvr first by running "gradle bootRun" in the qiusuo-configsvr
-project first. Then go to qiusuo-communityservice, 
-the qiusuo-communityservice will read the config from configsvr during startup
+You can either start qiusuo-communityservice or using gradle or using
+intellij 
 
-
-We are also working on the qiusuo-gatewaysvr so that frontend request will all go through the
-gatewaysvr.
 
 
 
