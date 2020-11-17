@@ -27,8 +27,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Collection<Community> getCommunitiesForUserId(String userId) {
-        User user = userRepository.findUserByUserId(userId);
+    public Collection<Community> getCommunitiesForCurrentUser() {
+        User user = getCurrentUser();
         /*here, it actually returns the proxy. Only when we try to fetch
         one of those values, Hibernate.initialize will initialize lazy objects
         */

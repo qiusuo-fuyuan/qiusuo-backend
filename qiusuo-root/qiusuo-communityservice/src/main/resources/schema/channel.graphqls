@@ -20,5 +20,5 @@ input CreateChannelInput {
 
 
 type ChannelMutation extend type Mutation {
-    createChannel(createChannelInput: CreateChannelInput!): Channel!
+    test: String!
 }
