@@ -70,12 +70,6 @@ public class CommunityService {
         return newCommunity;
     }
 
-
-    public Community getActiveCommunityForUser(String userId) {
-        User user = userRepository.findUserByUserId(userId);
-        return user.getActiveCommunity();
-    }
-
     private List<Channel> createDefaultChannels() {
         List<Channel> channels = new ArrayList<>() {
             {

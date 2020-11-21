@@ -19,7 +19,7 @@ input CreateCommunityInput {
 
 
 type CommunityQuery extend type Query {
-    activeCommunity(userId: ID!): Community!
+    activeCommunity: Community!
 }
 
 type CommunityMutation extend type Mutation {
