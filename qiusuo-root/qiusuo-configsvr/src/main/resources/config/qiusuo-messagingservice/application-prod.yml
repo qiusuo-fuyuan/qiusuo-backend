@@ -1,4 +1,6 @@
 spring:
+    application:
+        name: qiusuo-messagingservice
     data:
         cassandra:
             contact-points: 127.0.0.1
@@ -12,3 +14,10 @@ qiusuo:
     relay:
         host: localhost
         port: 61613
+
+eureka:
+    client:
+        register-with-eureka: true
+        fetch-registry: true
+        service-url:
+            defaultZone: http://localhost:8001/eureka

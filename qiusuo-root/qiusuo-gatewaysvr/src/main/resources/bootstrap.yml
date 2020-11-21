@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: qiusuo-gatewayservice
+  profiles:
+    active:
+      default
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - OPTIONS
+              - POST
+              - GET
+            allowedHeaders: "*"
+            allowCredentials: true
+      routes:
+        - id: community-service-route
+          uri: http://127.0.0.1:8060
+          predicates:
+            - Path=/community/**
+          filters:
+            - StripPrefix=1
+        - id: message-service-route
+          uri: http://127.0.0.1:8080
+          predicates:
+            - Path=/messaging/**
+
+server:
+  port: 8040
+
+special:
+  graphqlPath: /community/graphql

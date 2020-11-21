@@ -13,9 +13,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import java.util.Collection;
 
+/**
+ * Note: Lombok might change the hash() function. It might result in
+ * comparison error. Just keep this in mind.
+ */
 @Data
 @Entity
-public  class User {
+public class User {
     @Id
     @GeneratedValue(generator = "user_id_generator")
     @SequenceGenerator(name = "user_id_generator", sequenceName = "user_seq")
@@ -56,4 +60,7 @@ public  class User {
 
     @OneToOne
     private Community activeCommunity;
+
+    @OneToOne
+    private Channel activeChannel;
 }

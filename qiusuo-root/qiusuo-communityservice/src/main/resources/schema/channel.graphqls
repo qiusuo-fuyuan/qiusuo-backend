@@ -1,17 +1,24 @@
 type Channel {
     id: ID!
     name: String!
+    active: Boolean!
+    channelType: ChannelType
+    parentCommunity: Community
 }
 
-type ChannelType {
-
+enum ChannelType {
+    QA
+    CHAT
+    LIVE_STREAMING
 }
 
 input CreateChannelInput {
     communityId: ID!
     name: String!
+    channelType: ChannelType!
 }
 
+
 type ChannelMutation extend type Mutation {
-    createChannel(createChannelInput: CreateChannelInput!): Channel!
+    test: String!
 }

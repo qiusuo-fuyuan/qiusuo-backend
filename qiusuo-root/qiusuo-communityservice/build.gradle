@@ -21,23 +21,14 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.springframework.boot:spring-boot-starter-security"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
-<<<<<<< Updated upstream
-=======
-    implementation 'org.springframework.cloud:spring-cloud-config-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-
->>>>>>> Stashed changes
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
     implementation 'mysql:mysql-connector-java:8.0.20'
     implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:7.0.1'
     implementation 'com.graphql-java-kickstart:graphiql-spring-boot-starter:7.0.1'
     implementation "javax.inject:javax.inject:1"
-<<<<<<< Updated upstream
-    implementation  "javax.xml.bind:jaxb-api:2.3.1"
-    implementation 'org.springframework.cloud:spring-cloud-config-client'
-=======
     implementation "javax.xml.bind:jaxb-api:2.3.1"
->>>>>>> Stashed changes
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'org.springframework.cloud:spring-cloud-config-client'
 
     runtime files("config")
 
