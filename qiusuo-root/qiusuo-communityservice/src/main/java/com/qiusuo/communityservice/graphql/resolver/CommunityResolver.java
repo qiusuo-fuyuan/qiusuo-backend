@@ -29,12 +29,4 @@ public class CommunityResolver implements GraphQLResolver<Community> {
                 .split(","))
                 .collect(Collectors.toList());
     }
-
-    /**
-     * @param community The community of the domain object
-     * @return
-     */
-    public boolean active(Community community) {
-        return userService.getCurrentUser().getActiveCommunity().getId().equals(community.getId());
-    }
 }

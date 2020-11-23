@@ -4,7 +4,6 @@ type Community {
     description: String
     avatarUrl: String
     tags: [String]!
-    active: Boolean!
     channels: [Channel]!
 }
 

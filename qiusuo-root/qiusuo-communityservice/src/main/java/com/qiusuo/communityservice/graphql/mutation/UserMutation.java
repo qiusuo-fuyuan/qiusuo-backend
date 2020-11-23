@@ -13,17 +13,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserMutation implements GraphQLMutationResolver {
-    private CommunityRepository communityRepository;
-    private ChannelRepository channelRepository;
     private UserService userService;
-    private UserRepository userRepository;
 
-    public UserMutation(UserService userService, CommunityRepository communityRepository,
-                        ChannelRepository channelRepository, UserRepository userRepository) {
+    public UserMutation(UserService userService) {
         this.userService = userService;
-        this.communityRepository = communityRepository;
-        this.channelRepository = channelRepository;
-        this.userRepository = userRepository;
     }
 
     public User registerUser(UserRegistrationInput userRegistrationInput) {
@@ -31,18 +24,10 @@ public class UserMutation implements GraphQLMutationResolver {
     }
 
     public User setActiveCommunity(String communityId) {
-        User user = userService.getCurrentUser();
-        Community community = communityRepository.getOne(Long.parseLong(communityId));
-        user.setActiveCommunity(community);
-        userRepository.save(user);
-        return user;
+        return userService.setActiveCommunity(communityId);
     }
 
     public User setActiveChannel(String channelId) {
-        User user = userService.getCurrentUser();
-        Channel channel = channelRepository.getOne(Long.parseLong(channelId));
-        user.setActiveChannel(channel);
-        userRepository.save(user);
-        return user;
+        return userService.setActiveChannel(channelId);
     }
 }

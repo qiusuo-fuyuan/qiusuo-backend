@@ -4,6 +4,7 @@ type User {
     userId: String!
     avatarUrl: String
     activeCommunity: Community
+    activeChannel: Channel
 }
 
 type UserRegisterInput {

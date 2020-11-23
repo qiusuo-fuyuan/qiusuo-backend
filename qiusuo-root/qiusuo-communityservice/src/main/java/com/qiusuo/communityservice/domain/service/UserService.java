@@ -1,7 +1,10 @@
 package com.qiusuo.communityservice.domain.service;
 
+import com.qiusuo.communityservice.domain.model.Channel;
 import com.qiusuo.communityservice.domain.model.Community;
 import com.qiusuo.communityservice.domain.model.User;
+import com.qiusuo.communityservice.domain.repository.ChannelRepository;
+import com.qiusuo.communityservice.domain.repository.CommunityRepository;
 import com.qiusuo.communityservice.domain.repository.UserRepository;
 import com.qiusuo.communityservice.security.authentication.QiuSuoAuthenticationToken;
 import org.hibernate.Hibernate;
@@ -18,9 +21,14 @@ import java.util.List;
 @Service
 public class UserService {
     private UserRepository userRepository;
+    private CommunityRepository communityRepository;
+    private ChannelRepository channelRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, CommunityRepository communityRepository,
+                       ChannelRepository channelRepository) {
         this.userRepository = userRepository;
+        this.communityRepository = communityRepository;
+        this.channelRepository = channelRepository;
     }
 
     public List<User> allUsers() {
@@ -36,6 +44,22 @@ public class UserService {
             Hibernate.initialize(community.getChannels());
         });
         return user.getSubscribedCommunities();
+    }
+
+    public User setActiveCommunity(String communityId) {
+        User user = getCurrentUser();
+        Community community = communityRepository.getOne(Long.parseLong(communityId));
+        user.setActiveCommunity(community);
+        userRepository.save(user);
+        return user;
+    }
+
+    public User setActiveChannel(String channelId) {
+        User user = getCurrentUser();
+        Channel channel = channelRepository.getOne(Long.parseLong(channelId));
+        user.setActiveChannel(channel);
+        userRepository.save(user);
+        return user;
     }
 
     public User createUser(String name) {
