@@ -8,9 +8,17 @@ import org.springframework.boot.env.PropertySourceLoader;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -25,7 +33,7 @@ public class SchemaSourceLoader implements PropertySourceLoader, ExtendedSourceT
 
     @Override
     public String[] getFileExtensions() {
-        return new String[] {"graphqls"};
+        return new String[]{"graphqls"};
     }
 
     @Override
@@ -64,7 +72,7 @@ public class SchemaSourceLoader implements PropertySourceLoader, ExtendedSourceT
             sources.put(schemaName, content);
         }
 
-        List<Map<String, String>> loaded =new ArrayList<>();
+        List<Map<String, String>> loaded = new ArrayList<>();
         loaded.add(sources);
 
         List<PropertySource<?>> propertySources = new ArrayList<>(loaded.size());
@@ -77,14 +85,18 @@ public class SchemaSourceLoader implements PropertySourceLoader, ExtendedSourceT
         return propertySources;
     }
 
-    /** generate "graphqls_list" as property name.*/
+    /**
+     * generate "graphqls_list" as property name.
+     *
+     * @return
+     */
     @Override
     public String getKeyPropertyName() {
         return getFileExtensions()[0] + "_list";
     }
 
     @Override
-    public String getKeyPropertyValue(List<String> resourceNameList){
+    public String getKeyPropertyValue(List<String> resourceNameList) {
         if (resourceNameList == null || resourceNameList.size() == 0) {
             return "";
         }
