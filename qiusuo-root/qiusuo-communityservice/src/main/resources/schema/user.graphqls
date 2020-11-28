@@ -3,8 +3,6 @@ type User {
     name: String!
     userId: String!
     avatarUrl: String
-    activeCommunity: Community
-    activeChannel: Channel
 }
 
 type UserRegisterInput {
@@ -19,6 +17,6 @@ type UserQuery extend type Query {
 
 type UserMutation extend type Mutation{
     registerUser(name: String): User!
-    setActiveCommunity(communityId: ID!): User!
-    setActiveChannel(channelId: ID!): User!
+    setActiveCommunity(communityId: ID!): Community!
+    setActiveChannel(channelId: ID!): Channel!
 }

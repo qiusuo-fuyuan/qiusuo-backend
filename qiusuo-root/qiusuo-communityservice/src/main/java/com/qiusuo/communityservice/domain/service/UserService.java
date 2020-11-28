@@ -46,20 +46,20 @@ public class UserService {
         return user.getSubscribedCommunities();
     }
 
-    public User setActiveCommunity(String communityId) {
+    public Community setActiveCommunity(String communityId) {
         User user = getCurrentUser();
         Community community = communityRepository.getOne(Long.parseLong(communityId));
         user.setActiveCommunity(community);
         userRepository.save(user);
-        return user;
+        return community;
     }
 
-    public User setActiveChannel(String channelId) {
+    public Channel setActiveChannel(String channelId) {
         User user = getCurrentUser();
         Channel channel = channelRepository.getOne(Long.parseLong(channelId));
         user.setActiveChannel(channel);
         userRepository.save(user);
-        return user;
+        return channel;
     }
 
     public User createUser(String name) {

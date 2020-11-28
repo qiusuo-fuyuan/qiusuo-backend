@@ -17,10 +17,13 @@ public class ChannelService {
     private static Logger LOGGER = LoggerFactory.getLogger(ChannelService.class);
     private ChannelRepository channelRepository;
     private CommunityRepository communityRepository;
+    private UserService userService;
 
-    public ChannelService(ChannelRepository channelRepository, CommunityRepository communityRepository) {
+    public ChannelService(ChannelRepository channelRepository, CommunityRepository communityRepository,
+                          UserService userService) {
         this.channelRepository = channelRepository;
         this.communityRepository = communityRepository;
+        this.userService = userService;
     }
 
     public Community createChannel(String name, Long communityId) throws QiuSuoException {
@@ -38,5 +41,9 @@ public class ChannelService {
         channelRepository.save(channel);
         Hibernate.initialize(community.getChannels());
         return community;
+    }
+
+    public Channel getActiveChannelForCurrentUser() {
+        return userService.getCurrentUser().getActiveChannel();
     }
 }
