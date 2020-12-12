@@ -16,3 +16,5 @@ include 'qiusuo-messagingsvr'
 include 'qiusuo-searchservice'
 project(':core:authenticationservice').projectDir = file('core/authenticationservice')
 include 'qiusuo-gatewaysvr'
+include 'qiusuo-paymentservice'
+
