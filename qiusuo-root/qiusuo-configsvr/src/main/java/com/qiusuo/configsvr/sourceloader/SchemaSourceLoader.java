@@ -7,6 +7,7 @@ import org.springframework.boot.env.OriginTrackedMapPropertySource;
 import org.springframework.boot.env.PropertySourceLoader;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileUrlResource;
 import org.springframework.core.io.Resource;
 
 import java.io.BufferedReader;
@@ -41,8 +42,10 @@ public class SchemaSourceLoader implements PropertySourceLoader, ExtendedSourceT
         String schemaPath = null;
         if (resource instanceof ClassPathResource) {
             schemaPath = ((ClassPathResource) resource).getPath();
+        } else if (resource instanceof FileUrlResource) {
+            schemaPath = resource.getURL().getPath();
         } else {
-            this.LOGGER.error("Something went wrong, resource is not instance of ClassPathResource.");
+            this.LOGGER.error("Something went wrong, resource is not instance of ClassPathResource or FileUrlResource.");
             return Collections.emptyList();
         }
 
@@ -56,18 +59,20 @@ public class SchemaSourceLoader implements PropertySourceLoader, ExtendedSourceT
             if (line == null) {
                 break;
             }
-            schemaNameList.add(line);
-            schemaPathList.add(schemaFolder + line);
+            if (!line.equals("")) {
+                schemaNameList.add(line);
+                schemaPathList.add(schemaFolder + line);
+            }
         }
         reader.close();
-
 
         Map<String, String> sources = new HashMap<String, String>();
         sources.put(getKeyPropertyName(), getKeyPropertyValue(schemaNameList));
         for (int i = 0; i < schemaPathList.size(); i++) {
             String schemaName = schemaNameList.get(i);
             String path = schemaPathList.get(i);
-            Resource schemaResource = new ClassPathResource(path);
+            Resource schemaResource = resource instanceof ClassPathResource ?
+                    new ClassPathResource(path) : new FileUrlResource(path);
             String content = IOUtils.toString(schemaResource.getInputStream(), StandardCharsets.UTF_8);
             sources.put(schemaName, content);
         }
