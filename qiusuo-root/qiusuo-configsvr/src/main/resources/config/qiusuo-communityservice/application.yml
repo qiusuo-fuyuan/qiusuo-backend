@@ -29,13 +29,13 @@ graphql:
     tracing-enabled: true
 logging:
   level:
+    graphql:
+      execution: DEBUG
     com:
       qiusuo: DEBUG
       querydsl:
         jpa: DEBUG
     org:
-      apache:
-        catalina: TRACE
       springframework:
         web:
           filter:
