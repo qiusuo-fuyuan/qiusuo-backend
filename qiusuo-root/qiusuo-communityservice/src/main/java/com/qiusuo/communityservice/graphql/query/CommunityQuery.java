@@ -1,7 +1,6 @@
 package com.qiusuo.communityservice.graphql.query;
 
 import com.qiusuo.communityservice.domain.model.Community;
-import com.qiusuo.communityservice.domain.model.User;
 import com.qiusuo.communityservice.domain.service.CommunityService;
 import com.qiusuo.communityservice.domain.service.UserService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
@@ -21,7 +20,6 @@ public class CommunityQuery implements GraphQLQueryResolver {
 
     public Community activeCommunity() {
         //We will always set active community for the user when he subscribes some community
-        User user = userService.getCurrentUser();
-        return user.getActiveCommunity();
+        return communityService.getActiveCommunityForUser();
     }
 }

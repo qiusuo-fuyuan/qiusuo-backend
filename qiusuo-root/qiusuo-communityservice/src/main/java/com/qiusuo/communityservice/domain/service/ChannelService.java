@@ -26,7 +26,7 @@ public class ChannelService {
         this.userService = userService;
     }
 
-    public Community createChannel(String name, Long communityId) throws QiuSuoException {
+    public Channel createChannel(String name, Long communityId) throws QiuSuoException {
         Community community = communityRepository.findById(communityId).get();
         if (community == null) {
             LOGGER.error("CreateChannel: parent communityId {} does not exist", communityId);
@@ -40,7 +40,7 @@ public class ChannelService {
         //run time error might be thrown from here
         channelRepository.save(channel);
         Hibernate.initialize(community.getChannels());
-        return community;
+        return channel;
     }
 
     public Channel getActiveChannelForCurrentUser() {

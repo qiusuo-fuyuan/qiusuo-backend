@@ -18,7 +18,7 @@ input CreateChannelInput {
 }
 
 type ChannelQuery extend type Query {
-    activeChannel: Channel!
+    activeChannel: Channel
 }
 
 type ChannelMutation extend type Mutation {

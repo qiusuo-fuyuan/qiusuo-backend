@@ -51,6 +51,7 @@ public class UserService {
         Community community = communityRepository.getOne(Long.parseLong(communityId));
         user.setActiveCommunity(community);
         userRepository.save(user);
+        Hibernate.initialize(community.getChannels());
         return community;
     }
 
