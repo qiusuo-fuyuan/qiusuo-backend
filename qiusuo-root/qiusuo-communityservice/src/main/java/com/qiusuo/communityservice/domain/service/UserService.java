@@ -58,8 +58,9 @@ public class UserService {
     public Channel setActiveChannel(String channelId) {
         User user = getCurrentUser();
         Channel channel = channelRepository.getOne(Long.parseLong(channelId));
-        user.setActiveChannel(channel);
+        Collection<Channel> activeChannels = user.getActiveChannels();
         userRepository.save(user);
+        Hibernate.initialize(channel);
         return channel;
     }
 

@@ -14,6 +14,6 @@ public class ChannelQuery implements GraphQLQueryResolver {
     }
 
     public Channel activeChannel() {
-        return channelService.getActiveChannelForCurrentUser();
+        return channelService.getActiveChannelForCommunity();
     }
 }

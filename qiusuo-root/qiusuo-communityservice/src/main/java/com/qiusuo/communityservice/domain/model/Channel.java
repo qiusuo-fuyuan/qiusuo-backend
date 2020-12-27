@@ -21,7 +21,6 @@ public class Channel {
     @Id
     @GeneratedValue(generator = "channel_id_generator")
     @SequenceGenerator(name = "channel_id_generator", sequenceName = "community_seq")
-
     private Long id;
     private String name;
 

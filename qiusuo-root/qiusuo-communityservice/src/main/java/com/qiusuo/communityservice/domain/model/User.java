@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import java.util.Collection;
@@ -61,6 +62,7 @@ public class User {
     @OneToOne
     private Community activeCommunity;
 
-    @OneToOne
-    private Channel activeChannel;
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private Collection<Channel> activeChannels;
 }

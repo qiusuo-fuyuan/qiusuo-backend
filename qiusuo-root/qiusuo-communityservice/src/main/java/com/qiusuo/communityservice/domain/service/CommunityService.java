@@ -71,10 +71,13 @@ public class CommunityService {
         exceptions.Even it throws exception, it is still runtime exception
          */
         communityRepository.save(newCommunity);
-
         //set the newly created community as the current active community at the same time.
         user.setActiveCommunity(newCommunity);
-        user.setActiveChannel(defaultChannels.get(0));
+        user.setActiveChannels(new ArrayList<>() {
+            {
+                add(defaultChannels.get(0));
+            }
+        });
         userRepository.save(user);
         return newCommunity;
     }
