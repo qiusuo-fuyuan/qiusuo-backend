@@ -18,8 +18,8 @@ public class CommunityQuery implements GraphQLQueryResolver {
         this.communityService = communityService;
     }
 
-    public Community activeCommunity(String userId) {
+    public Community activeCommunity() {
         //We will always set active community for the user when he subscribes some community
-        return communityService.getActiveCommunityForUser(userId);
+        return communityService.getActiveCommunityForUser();
     }
 }

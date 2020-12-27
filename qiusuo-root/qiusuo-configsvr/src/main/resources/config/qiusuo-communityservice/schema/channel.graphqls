@@ -1,7 +1,6 @@
 type Channel {
     id: ID!
     name: String!
-    active: Boolean!
     channelType: ChannelType
     parentCommunity: Community
 }
@@ -18,6 +17,9 @@ input CreateChannelInput {
     channelType: ChannelType!
 }
 
+type ChannelQuery extend type Query {
+    activeChannel: Channel
+}
 
 type ChannelMutation extend type Mutation {
     test: String!

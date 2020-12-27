@@ -34,8 +34,6 @@ logging:
       querydsl:
         jpa: DEBUG
     org:
-      apache:
-        catalina: TRACE
       springframework:
         web:
           filter:

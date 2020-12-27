@@ -8,24 +8,33 @@ import com.qiusuo.communityservice.domain.model.User;
 import com.qiusuo.communityservice.domain.repository.CommunityRepository;
 import com.qiusuo.communityservice.domain.repository.UserRepository;
 import com.qiusuo.communityservice.exception.QiuSuoException;
+import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Transactional
 @Service
 public class CommunityService {
     private static final Logger LOGGER = LoggerFactory.getLogger(CommunityService.class);
     private CommunityRepository communityRepository;
     private UserRepository userRepository;
 
-    public CommunityService(CommunityRepository communityRepository, UserRepository userRepository) {
+    /*TODO: community service contains both UserRepository and UserService.
+    It can be improved only include UserService
+     */
+    private UserService userService;
+
+    public CommunityService(CommunityRepository communityRepository, UserRepository userRepository, UserService userService) {
         this.communityRepository = communityRepository;
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     public Community createCommunity(String userId,
@@ -62,19 +71,35 @@ public class CommunityService {
         exceptions.Even it throws exception, it is still runtime exception
          */
         communityRepository.save(newCommunity);
-
         //set the newly created community as the current active community at the same time.
         user.setActiveCommunity(newCommunity);
-        user.setActiveChannel(defaultChannels.get(0));
+
+        user.getActiveChannels().add(defaultChannels.get(0));
+        List<Channel> newActiveChannels = new ArrayList<>(user.getActiveChannels());
+        newActiveChannels.add(defaultChannels.get(0));
+        user.setActiveChannels(newActiveChannels);
         userRepository.save(user);
+        
         return newCommunity;
     }
 
-
-    public Community getActiveCommunityForUser(String userId) {
-        User user = userRepository.findUserByUserId(userId);
-        return user.getActiveCommunity();
+    public Community getActiveCommunityForUser() {
+        Community community = userService.getCurrentUser().getActiveCommunity();
+        if (community != null) {
+            Hibernate.initialize(community.getChannels());
+        }
+        return community;
     }
+
+    public Community setActiveCommunity(String communityId) {
+        User user = userService.getCurrentUser();
+        Community community = communityRepository.getOne(Long.parseLong(communityId));
+        user.setActiveCommunity(community);
+        userRepository.save(user);
+        Hibernate.initialize(community.getChannels());
+        return community;
+    }
+
 
     private List<Channel> createDefaultChannels() {
         List<Channel> channels = new ArrayList<>() {
@@ -84,6 +109,4 @@ public class CommunityService {
         };
         return channels;
     }
-
-
 }

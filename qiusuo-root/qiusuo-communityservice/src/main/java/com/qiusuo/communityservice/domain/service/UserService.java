@@ -2,6 +2,8 @@ package com.qiusuo.communityservice.domain.service;
 
 import com.qiusuo.communityservice.domain.model.Community;
 import com.qiusuo.communityservice.domain.model.User;
+import com.qiusuo.communityservice.domain.repository.ChannelRepository;
+import com.qiusuo.communityservice.domain.repository.CommunityRepository;
 import com.qiusuo.communityservice.domain.repository.UserRepository;
 import com.qiusuo.communityservice.security.authentication.QiuSuoAuthenticationToken;
 import org.hibernate.Hibernate;
@@ -18,9 +20,14 @@ import java.util.List;
 @Service
 public class UserService {
     private UserRepository userRepository;
+    private CommunityRepository communityRepository;
+    private ChannelRepository channelRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, CommunityRepository communityRepository,
+                       ChannelRepository channelRepository) {
         this.userRepository = userRepository;
+        this.communityRepository = communityRepository;
+        this.channelRepository = channelRepository;
     }
 
     public List<User> allUsers() {

@@ -1,5 +1,6 @@
 package com.qiusuo.communityservice.graphql.mutation;
 
+import com.qiusuo.communityservice.domain.model.Channel;
 import com.qiusuo.communityservice.domain.model.Community;
 import com.qiusuo.communityservice.domain.service.ChannelService;
 import com.qiusuo.communityservice.domain.service.CommunityService;
@@ -33,7 +34,7 @@ public class CommunityMutation implements GraphQLMutationResolver {
                 createCommunityInput.getAvatarUrl(), createCommunityInput.getTags());
     }
 
-    public Community addChannel(CreateChannelInput createChannelInput) throws QiuSuoException {
+    public Channel addChannel(CreateChannelInput createChannelInput) throws QiuSuoException {
         return channelService.createChannel(createChannelInput.getName(), createChannelInput.getCommunityId());
     }
 }

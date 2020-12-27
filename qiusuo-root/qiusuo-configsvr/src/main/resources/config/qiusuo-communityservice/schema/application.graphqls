@@ -1,6 +1,6 @@
-user.graphqls
+root.graphqls
 auth.graphqls
 channel.graphqls
-gatekeeper.graphqls
 community.graphqls
-root.graphqls
+gatekeeper.graphqls
+user.graphqls
