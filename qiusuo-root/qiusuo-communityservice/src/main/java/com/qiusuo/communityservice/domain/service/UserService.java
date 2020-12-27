@@ -1,6 +1,5 @@
 package com.qiusuo.communityservice.domain.service;
 
-import com.qiusuo.communityservice.domain.model.Channel;
 import com.qiusuo.communityservice.domain.model.Community;
 import com.qiusuo.communityservice.domain.model.User;
 import com.qiusuo.communityservice.domain.repository.ChannelRepository;
@@ -44,24 +43,6 @@ public class UserService {
             Hibernate.initialize(community.getChannels());
         });
         return user.getSubscribedCommunities();
-    }
-
-    public Community setActiveCommunity(String communityId) {
-        User user = getCurrentUser();
-        Community community = communityRepository.getOne(Long.parseLong(communityId));
-        user.setActiveCommunity(community);
-        userRepository.save(user);
-        Hibernate.initialize(community.getChannels());
-        return community;
-    }
-
-    public Channel setActiveChannel(String channelId) {
-        User user = getCurrentUser();
-        Channel channel = channelRepository.getOne(Long.parseLong(channelId));
-        Collection<Channel> activeChannels = user.getActiveChannels();
-        userRepository.save(user);
-        Hibernate.initialize(channel);
-        return channel;
     }
 
     public User createUser(String name) {

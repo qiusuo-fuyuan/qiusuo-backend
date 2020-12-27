@@ -73,12 +73,13 @@ public class CommunityService {
         communityRepository.save(newCommunity);
         //set the newly created community as the current active community at the same time.
         user.setActiveCommunity(newCommunity);
-        user.setActiveChannels(new ArrayList<>() {
-            {
-                add(defaultChannels.get(0));
-            }
-        });
+
+        user.getActiveChannels().add(defaultChannels.get(0));
+        List<Channel> newActiveChannels = new ArrayList<>(user.getActiveChannels());
+        newActiveChannels.add(defaultChannels.get(0));
+        user.setActiveChannels(newActiveChannels);
         userRepository.save(user);
+        
         return newCommunity;
     }
 
@@ -89,6 +90,16 @@ public class CommunityService {
         }
         return community;
     }
+
+    public Community setActiveCommunity(String communityId) {
+        User user = userService.getCurrentUser();
+        Community community = communityRepository.getOne(Long.parseLong(communityId));
+        user.setActiveCommunity(community);
+        userRepository.save(user);
+        Hibernate.initialize(community.getChannels());
+        return community;
+    }
+
 
     private List<Channel> createDefaultChannels() {
         List<Channel> channels = new ArrayList<>() {

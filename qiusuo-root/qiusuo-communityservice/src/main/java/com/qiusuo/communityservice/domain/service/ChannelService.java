@@ -54,7 +54,18 @@ public class ChannelService {
         return channel;
     }
 
-    private Collection<Channel> replaceActiveChannelForCommunity(Collection<Channel> currentActiveChannels, Community activeCommunity, Channel newActiveChannel) {
+    public Channel setActiveChannel(String channelId) {
+        User user = userService.getCurrentUser();
+        Community activeCommunity = user.getActiveCommunity();
+        Channel channel = channelRepository.getOne(Long.parseLong(channelId));
+        user.setActiveChannels(replaceActiveChannelForCommunity(user.getActiveChannels(), activeCommunity, channel));
+        userRepository.save(user);
+        Hibernate.initialize(channel);
+        return channel;
+    }
+
+    private Collection<Channel> replaceActiveChannelForCommunity(Collection<Channel> currentActiveChannels,
+                                                                 Community activeCommunity, Channel newActiveChannel) {
         List<Channel> updatedActiveChannel = currentActiveChannels.stream()
                 .filter(channel -> !channel.getCommunity().getId().equals(activeCommunity.getId()))
                 .collect(Collectors.toList());
