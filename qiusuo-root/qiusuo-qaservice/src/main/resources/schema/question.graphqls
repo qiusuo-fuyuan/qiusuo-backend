@@ -1,0 +1,33 @@
+type Question{
+    id: String!,
+    communityId: String!,
+    userId: String!,
+    tags: String,
+    title: String!,
+    content: String!,
+    price: Float,
+    viewCount: Int,
+    creationTime: String,
+    answers: [Answer]
+}
+
+input QuestionInput{
+    communityId: String!,
+    userId: String!,
+    tags: String,
+    title: String!,
+    content: String!,
+    price: Float
+}
+
+type QuestionMutation extend type Mutation{
+    addQuestion(questionInput: QuestionInput): Question!
+    updateQuestion(id:String, title:String, content:String): Question!
+    deleteQuestion(id:String): Question!
+    updateViewCount(id:String): Question!
+}
+
+type QuestionQuery extend type Query {
+    questionsOfCommunity(communityId:String):[Question!]
+    question(questionId: String): Question
+}

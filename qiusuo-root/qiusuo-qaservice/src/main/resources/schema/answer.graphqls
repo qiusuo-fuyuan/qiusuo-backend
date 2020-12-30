@@ -1,0 +1,22 @@
+type Answer{
+    id: String!,
+    questionId: String!,
+    parentAnswerId: String,
+    userId: String,
+    content: String
+    adopted: Boolean,
+    answerTime: String
+}
+
+type AnswerMutation extend type Mutation{
+    addAnswer(questionId: String!, userId: String!, content: String!): Answer
+    deleteAnswer(questionId: String!, id:String!): Answer!
+
+    updateAnswer(questionId: String, answerId: String!, content: String): Answer
+    acceptAnswer(questionId: String, answerId: String!): Answer
+}
+
+type AnswerQuery extend type Query {
+    answersOfQuestion(questionId: String): [Answer]
+    answer(questionId: String, id: String): Answer
+}
