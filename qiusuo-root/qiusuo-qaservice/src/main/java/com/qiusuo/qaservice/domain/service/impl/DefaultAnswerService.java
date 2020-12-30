@@ -9,12 +9,14 @@ import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class DefaultAnswerService implements AnswerService {
     private MongoTemplate mongoTemplate;
 
@@ -55,7 +57,7 @@ public class DefaultAnswerService implements AnswerService {
     }
 
     @Override
-    public List<Answer> queryAnswerListByQuestionId(String questionId) {
+    public List<Answer> getAnswersForQuestion(String questionId) {
         return null;
     }
 

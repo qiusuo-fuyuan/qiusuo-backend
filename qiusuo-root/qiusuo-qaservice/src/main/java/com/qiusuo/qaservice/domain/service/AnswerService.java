@@ -14,7 +14,7 @@ public interface AnswerService {
 
     void updateAnswer(Answer answer);
 
-    List<Answer> queryAnswerListByQuestionId(String questionId);
+    List<Answer> getAnswersForQuestion(String questionId);
 
     /**
      * get answer by questionId and answerId.
