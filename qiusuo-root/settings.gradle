@@ -7,15 +7,12 @@ rootProject.name = 'qiusuo-root'
 include 'qiusuo-qaservice'
 include 'qiusuo-communityservice'
 include 'qiusuo-streamingservice'
-include(':core:authenticationservice')
 include 'qiusuo-configsvr'
-include(':core')
+include('qiusuo-platform')
 include 'qiusuo-coderunner'
 include 'qiusuo-eurekasvr'
 include 'qiusuo-messagingsvr'
 include 'qiusuo-searchservice'
-project(':core:authenticationservice').projectDir = file('core/authenticationservice')
 include 'qiusuo-gatewaysvr'
 include 'qiusuo-paymentservice'
 include 'qiusuo-eventcenter'
-
