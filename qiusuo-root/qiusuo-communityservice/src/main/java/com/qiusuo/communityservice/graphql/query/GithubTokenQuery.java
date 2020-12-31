@@ -1,11 +1,11 @@
 package com.qiusuo.communityservice.graphql.query;
 
-import com.qiusuo.communityservice.exception.QiuSuoException;
 import com.qiusuo.communityservice.util.http.HttpRequestHelper;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
+import qiusuo.platform.exception.QiuSuoException;
 
 import java.net.http.HttpRequest;
 import java.util.HashMap;

@@ -5,7 +5,6 @@ type Answer{
     userId: String,
     content: String
     adopted: Boolean,
-    answerTime: String
 }
 
 type AnswerMutation extend type Mutation{
