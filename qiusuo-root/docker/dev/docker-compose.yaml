@@ -1,42 +1,53 @@
 version: "3.7"
 services:
-    cassandra: 
-        container_name: qiusuo-cassandra
-        image: cassandra:latest
-        ports:
-            - '7000:7000'
-            - '9042:9042'
-        volumes:
-            -  ../../data/dev/cassandra:/var/lib/cassandra
-            -  ./cassandra:/etc/cassandra
+  cassandra:
+    container_name: qiusuo-cassandra
+    image: cassandra:latest
+    ports:
+      - '7000:7000'
+      - '9042:9042'
+    volumes:
+      - ../../data/dev/cassandra:/var/lib/cassandra
+      - ./cassandra:/etc/cassandra
 
-    mysql:
-        container_name: 'qiusuo-mysql'
-        image: 'mysql:8.0'
-        environment:
-            MYSQL_ROOT_PASSWORD: qiusuo
-            MYSQL_DATABASE: qiusuo
-            MYSQL_USER: qiusuo
-            MYSQL_PASSWORD: qiusuo
-        ports:
-            - "4406:3306"
-        volumes:
-            - ../../data/dev/mysql:/var/lib/mysql
-        command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
-    redis:
-        container_name: 'qiusuo-redis'
-        image: 'redis:latest'
-        ports:
-            - "6379:6379"
-    rocketmq-stomp:
-        image: rocketmq-stomp:v1
-        container_name: qiusuo-rabbitmq
-        ports:
-            - "5672:5672"
-            - "15672:15672"
-            - "61613:61613"
+  mysql:
+    container_name: 'qiusuo-mysql'
+    image: 'mysql:8.0'
+    environment:
+      MYSQL_ROOT_PASSWORD: qiusuo
+      MYSQL_DATABASE: qiusuo
+      MYSQL_USER: qiusuo
+      MYSQL_PASSWORD: qiusuo
+    ports:
+      - "4406:3306"
+    volumes:
+      - ../../data/dev/mysql:/var/lib/mysql
+    command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
+  redis:
+    container_name: 'qiusuo-redis'
+    image: 'redis:latest'
+    ports:
+      - "6379:6379"
+  rocketmq-stomp:
+    image: rocketmq-stomp:v1
+    container_name: qiusuo-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+      - "61613:61613"
+  mongo:
+    container_name: mongodb
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: qiusuo
+      MONGO_INITDB_ROOT_PASSWORD: qiusuo
+    ports:
+      - 27018:27017
+    volumes:
+      - ../../data/dev/mongo:/data/db -d mongo --auth
 networks:
-    default:
-        external:
-            name: dev-qiusuo-cluster
+  default:
+    external:
+      name: dev-qiusuo-cluster
 

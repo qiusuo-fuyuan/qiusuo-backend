@@ -7,13 +7,13 @@ import com.qiusuo.communityservice.domain.model.Community;
 import com.qiusuo.communityservice.domain.model.User;
 import com.qiusuo.communityservice.domain.repository.CommunityRepository;
 import com.qiusuo.communityservice.domain.repository.UserRepository;
-import com.qiusuo.communityservice.exception.QiuSuoException;
 import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
+import qiusuo.platform.exception.QiuSuoException;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -79,7 +79,7 @@ public class CommunityService {
         newActiveChannels.add(defaultChannels.get(0));
         user.setActiveChannels(newActiveChannels);
         userRepository.save(user);
-        
+
         return newCommunity;
     }
 

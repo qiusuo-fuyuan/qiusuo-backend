@@ -1,7 +1,7 @@
 package com.qiusuo.communityservice.util.http;
 
 
-import com.qiusuo.communityservice.exception.QiuSuoException;
+import qiusuo.platform.exception.QiuSuoException;
 
 import java.io.IOException;
 import java.net.URI;

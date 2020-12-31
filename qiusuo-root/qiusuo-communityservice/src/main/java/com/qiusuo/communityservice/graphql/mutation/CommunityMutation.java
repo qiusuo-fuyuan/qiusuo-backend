@@ -4,13 +4,13 @@ import com.qiusuo.communityservice.domain.model.Channel;
 import com.qiusuo.communityservice.domain.model.Community;
 import com.qiusuo.communityservice.domain.service.ChannelService;
 import com.qiusuo.communityservice.domain.service.CommunityService;
-import com.qiusuo.communityservice.exception.QiuSuoException;
 import com.qiusuo.communityservice.graphql.types.CreateChannelInput;
 import com.qiusuo.communityservice.graphql.types.CreateCommunityInput;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import lombok.Setter;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
+import qiusuo.platform.exception.QiuSuoException;
 
 @Secured("ROLE_USER")
 @Component

@@ -9,16 +9,16 @@ plugins {
 
 allprojects {
     group = 'com.qiusuo'
-    version = '1.0-SNAPSHOT'
+    version = '1.0'
 }
 
 ext {
     set('springCloudVersion', "Hoxton.SR8")
 }
 
-subprojects {
-    apply plugin:'java'
-    apply plugin:'maven-publish'
+configure(subprojects.findAll { it.name != 'qiusuo-platform' }) {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
     apply plugin: 'org.springframework.boot'
 
     //this plugin will automatically import spring boot bom
