@@ -36,7 +36,7 @@ services:
       - "15672:15672"
       - "61613:61613"
   mongo:
-    container_name: mongodb
+    container_name: qiusuo-mongo
     image: mongo
     restart: always
     environment:
