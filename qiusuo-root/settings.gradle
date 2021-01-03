@@ -16,3 +16,5 @@ include 'qiusuo-searchservice'
 include 'qiusuo-gatewaysvr'
 include 'qiusuo-paymentservice'
 include 'qiusuo-eventcenter'
+include 'qiusuo-authorizationserver'
+
