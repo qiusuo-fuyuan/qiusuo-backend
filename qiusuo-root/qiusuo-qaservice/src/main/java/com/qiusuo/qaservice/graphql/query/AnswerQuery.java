@@ -29,14 +29,13 @@ public class AnswerQuery implements GraphQLQueryResolver {
     }
 
     /**
-     * query Answer Detail
+     * get answer by questionId and answerId
      *
      * @param questionId
-     * @param id
+     * @param id         answerId
      * @return
      */
     public Answer answer(String questionId, String id) {
         return answerService.getAnswer(questionId, id);
     }
-
 }
