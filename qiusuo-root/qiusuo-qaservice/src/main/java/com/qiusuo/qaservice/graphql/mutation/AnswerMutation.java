@@ -35,10 +35,10 @@ public class AnswerMutation implements GraphQLMutationResolver {
      * @param content
      * @return
      */
-    public Answer updateAnswer(String questionId, String answerId, String content) {
+    public Answer updateAnswer(String questionId, String answerId, String content) throws QiuSuoException{
         Answer answer = answerService.getAnswer(questionId, answerId);
         if (answer == null) {
-            throw new RuntimeException(String.format("answer with answerId=%s not found", answerId));
+            throw new QiuSuoException(QiuSuoStringUtils.message("answer with answerId={} not found", answerId));
         }
         answer.setContent(content);
         answerService.updateAnswer(answer);
@@ -46,16 +46,16 @@ public class AnswerMutation implements GraphQLMutationResolver {
     }
 
     /**
-     * deleteAnswer
+     * delete answer
      *
      * @param questionId
      * @param id
      * @return
      */
-    public Answer deleteAnswer(String questionId, String id) {
+    public Answer deleteAnswer(String questionId, String id) throws QiuSuoException{
         Answer answer = answerService.getAnswer(questionId, id);
         if (answer == null) {
-            throw new RuntimeException(String.format("answer with answerId=%s not found", id));
+            throw new QiuSuoException(QiuSuoStringUtils.message("answer with answerId={} not found", id));
         }
         answerService.deleteAnswer(questionId, id);
         return new Answer();
@@ -71,7 +71,7 @@ public class AnswerMutation implements GraphQLMutationResolver {
     public Answer acceptAnswer(String questionId, String answerId) throws QiuSuoException {
         Answer answer = answerService.getAnswer(questionId, answerId);
         if (answer == null) {
-            throw new QiuSuoException(QiuSuoStringUtils.message("answer with answerId=%s not found", answerId));
+            throw new QiuSuoException(QiuSuoStringUtils.message("answer with answerId={} not found", answerId));
         }
         answer.setAdopted(true);
         answerService.acceptAnswer(answer);

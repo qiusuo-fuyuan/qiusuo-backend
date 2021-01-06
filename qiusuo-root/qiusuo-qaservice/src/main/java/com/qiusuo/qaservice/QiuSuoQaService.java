@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class QiuSuoQAApplication {
+public class QiuSuoQaService {
     public static void main(String[] args)  {
-        SpringApplication.run(QiuSuoQAApplication.class, args);
+        SpringApplication.run(QiuSuoQaService.class, args);
     }
 }
