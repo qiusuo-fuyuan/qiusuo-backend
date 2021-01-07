@@ -58,6 +58,8 @@ public class QuestionMutation implements GraphQLMutationResolver {
     }
 
     /**
+     * Update question reward amount
+     *
      * @param id
      * @param price
      * @return
@@ -77,10 +79,10 @@ public class QuestionMutation implements GraphQLMutationResolver {
      * @param id
      * @return
      */
-    public Question deleteQuestion(String id) {
+    public Question deleteQuestion(String id) throws QiuSuoException {
         Question question = questionService.getQuestionById(id);
         if (question == null) {
-            throw new RuntimeException(String.format("question with questionId=%s not found", id));
+            throw new QiuSuoException(QiuSuoStringUtils.message("question with questionId={} not found", id));
         }
         questionService.deleteQuestion(id);
         return question;
@@ -92,10 +94,10 @@ public class QuestionMutation implements GraphQLMutationResolver {
      * @param id
      * @return
      */
-    public Question updateViewCount(String id) {
+    public Question updateViewCount(String id) throws QiuSuoException {
         Question question = questionService.getQuestionById(id);
         if (question == null) {
-            throw new RuntimeException(String.format("question with questionId=%s not found", id));
+            throw new QiuSuoException(QiuSuoStringUtils.message("question with questionId={} not found", id));
         }
         questionService.updateViewCount(question);
         return question;

@@ -3,8 +3,8 @@ type Answer{
     questionId: String!,
     parentAnswerId: String,
     userId: String,
-    content: String
-    adopted: Boolean,
+    content: String,
+    adopted: Boolean
 }
 
 type AnswerMutation extend type Mutation{
