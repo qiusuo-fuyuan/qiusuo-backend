@@ -19,11 +19,14 @@ Step 2: enable annotation processing in Intellij \
 git clone https://github.com/qiusuo-fuyuan/qiusuo-backend.git& 
 git checkout develop\
 cd qiusuo-gatewaysvr&gradle bootRun\
-cd qiusuo-configsvr&run gradle bootRun
+cd qiusuo-eurekasvr&gradle bootRun
+cd qiusuo-configsvr&gradle bootRun
+cd qiusuo-messagingsrv&gradle bootRun
 
 You can either start qiusuo-communityservice or using gradle or using
 intellij 
 
+After this, you can download the frontend, startup the frontend.
 
 
 # Migrating to Spring WebFlux
