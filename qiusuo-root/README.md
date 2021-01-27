@@ -1,12 +1,13 @@
 # How to build  qiusuo-messagingsrv
-Step 1:Go to folder qiusuo-root/config/dev/rabbitmq\
-run docker-compose build to build the rabbitmq docker image
+Step 1: first build rabbitmq docker image
+cd qiusuo-root/config/dev/rabbitmq&docker-compose build
 
 Step 2:
 docker network create -d bridge dev-qiusuo-cluster --subnet=172.20.0.0/16
 
 
-Step 3 cd config/dev, run docker-compose up
+Step 3 Starting all the docker containers
+cd config/dev&docker-compose up
 
 # How to build the qiusuo-community project
 
@@ -22,8 +23,6 @@ cd qiusuo-configsvr&run gradle bootRun
 
 You can either start qiusuo-communityservice or using gradle or using
 intellij 
-
-
 
 
 
