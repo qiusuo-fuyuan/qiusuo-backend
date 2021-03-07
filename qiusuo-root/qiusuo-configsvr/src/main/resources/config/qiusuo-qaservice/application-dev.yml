@@ -1,0 +1,29 @@
+spring:
+application:
+  name: qiusuo-qaservice
+
+data:
+  mongodb:
+    uri: mongodb://qiusuo:qiusuo@localhost:27018/admin
+
+graphiql:
+  cdn:
+    enabled: true
+  enabled: true
+graphql:
+  servlet:
+    exception-handlers-enabled: true
+    tracing-enabled: true
+logging:
+  level:
+    graphql:
+      execution: DEBUG
+    com:
+      qiusuo: DEBUG
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka

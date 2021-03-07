@@ -1,13 +1,11 @@
 # How to build  qiusuo-messagingsrv
 
-Step 1:Go to folder qiusuo-root/config/dev/rabbitmq\
-run docker-compose build\
-to build the rabbitmq docker image
+Step 1: first build rabbitmq docker image cd qiusuo-root/config/dev/rabbitmq&docker-compose build
 
 Step 2:
 docker network create -d bridge dev-qiusuo-cluster --subnet=172.20.0.0/16
 
-Step 3 cd config/dev, run docker-compose up
+Step 3 Starting all the docker containers cd config/dev&docker-compose up
 
 # How to build the qiusuo-community project
 
@@ -19,9 +17,11 @@ Step 2: enable annotation processing in Intellij \
 git clone https://github.com/qiusuo-fuyuan/qiusuo-backend.git&
 git checkout develop\
 cd qiusuo-gatewaysvr&gradle bootRun\
-cd qiusuo-configsvr&run gradle bootRun
+cd qiusuo-eurekasvr&gradle bootRun cd qiusuo-configsvr&gradle bootRun cd qiusuo-messagingsrv&gradle bootRun
 
 You can either start qiusuo-communityservice or using gradle or using intellij
+
+After this, you can download the frontend, startup the frontend.
 
 # Migrating to Spring WebFlux
 

@@ -30,16 +30,12 @@ public class DefaultAnswerService implements AnswerService {
         answer.setQuestionId(questionId);
         answer.setUserId(userId);
         answer.setContent(content);
-
-        //TODO
         answer.setAdopted(false);
         answer.setCreationTime(LocalDateTime.now());
 
         Query query = Query.query(Criteria.where("id").is(answer.getQuestionId()));
         answer.setId(UUID.randomUUID().toString());
         Update update = new Update();
-        // addToSet: If the data already exists, nothing is done, and push inserts the same data
-        // update.push("Students", student);
         update.addToSet("answers", answer);
         mongoTemplate.upsert(query, update, Question.class);
         return answer;

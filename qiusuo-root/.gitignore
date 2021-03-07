@@ -6,3 +6,7 @@ generated
 out
 .gradle
 **/logs
+**/.classpath
+bin
+**/.settings
+**/.project
