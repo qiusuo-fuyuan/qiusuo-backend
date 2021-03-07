@@ -2,7 +2,7 @@ version: "3.7"
 services:
   rocketmq-stomp:
     build: .
-    image: rocketmq-stomp:v1
+    image: rabbitmq-stomp:v1
     container_name: rabbitmq
     ports:
       - "5672:5672"
