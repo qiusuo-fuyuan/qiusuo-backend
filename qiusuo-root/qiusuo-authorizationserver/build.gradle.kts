@@ -1,5 +1,5 @@
-repositories {
-    mavenCentral()
+plugins {
+    id("com.qiusuo.build")
 }
 
 dependencies {

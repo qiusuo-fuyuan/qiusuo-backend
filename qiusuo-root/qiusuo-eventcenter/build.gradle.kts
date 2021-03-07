@@ -1,6 +1,7 @@
-repositories {
-    mavenCentral()
+plugins {
+    id("com.qiusuo.build")
 }
+
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
