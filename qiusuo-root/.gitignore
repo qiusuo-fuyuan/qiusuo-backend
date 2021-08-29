@@ -10,3 +10,4 @@ out
 bin
 **/.settings
 **/.project
+.DS_Store

@@ -3,4 +3,4 @@ spring:
     name: qiusuo-gatewayservice
 
 logging:
-  config: classpath:log4j2-dev.yml
+  config: classpath:log4j2-prod.yml
